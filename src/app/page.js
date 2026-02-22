@@ -91,8 +91,8 @@ export default function Landing() {
                     className="w-full flex justify-center"
                 >
                     <p className="text-center max-w-2xl w-full text-white/50 text-lg leading-relaxed">
-                        The ultimate cyberpunk tech festival. Code, compete, and create
-                        in a neon-drenched world of innovation and digital artistry.
+                        An event featuring a mix of technical and non-technical challenges.
+                        Designed to test cybersecurity awareness, problem-solving, speed, and strategic thinking.
                     </p>
                 </motion.div>
 

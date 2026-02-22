@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const navLinks = [
     { path: '/', label: 'Home' },
@@ -23,7 +24,12 @@ export default function Navbar() {
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group">
                     <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-purple to-neon-blue flex items-center justify-center neon-glow-purple">
-                        <span className="text-white font-bold text-sm font-heading">TP</span>
+                        <span><Image
+                            src="/codehub-logo.png"
+                            alt="CODEHUB Logo"
+                            width={120}
+                            height={120}
+                        /></span>
                     </div>
                     <span className="font-heading text-lg font-bold tracking-wider">
                         <span className="text-neon-purple neon-text-purple">Code</span>

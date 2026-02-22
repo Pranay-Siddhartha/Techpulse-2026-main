@@ -27,7 +27,7 @@ export default function Footer() {
                             <span style={{ color: '#00f0ff' }}>hub</span>
                         </h3>
                         <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem', lineHeight: '1.6', maxWidth: '16rem', margin: 0 }}>
-                            Where innovation meets the neon underground.
+                            DEPT OF CSE.
                         </p>
                     </div>
 
@@ -35,9 +35,9 @@ export default function Footer() {
                     <div style={{ textAlign: 'center' }}>
                         <h4 className="font-heading" style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#00f0ff', marginBottom: '0.75rem' }}>Contact</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>📧 hello@codehub.dev</span>
+                            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>📧 csecodehub@gmail.com</span>
                             <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>📍 JBIET, Hyderabad</span>
-                            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>📱 +91 9876543210</span>
+                            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>📱 +91 70322 45919</span>
                         </div>
                     </div>
                 </div>
