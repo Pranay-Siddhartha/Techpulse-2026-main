@@ -58,14 +58,17 @@ export default function Landing() {
             {/* Hero Content */}
             <div className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center gap-12 py-32">
                 {/* Subtitle */}
-                <motion.p
+                <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    className="font-heading text-xs tracking-[0.3em] uppercase text-neon-blue/70"
+                    style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                 >
-                    CODEHUB PRESENTS
-                </motion.p>
+                    <p className="font-heading text-xs tracking-[0.3em] uppercase text-neon-blue/70" style={{ margin: 0 }}>
+                        CODEHUB PRESENTS
+                    </p>
+                    <div style={{ height: '1px', width: '4rem', background: 'linear-gradient(90deg, transparent, #00f0ff, transparent)', marginTop: '0.75rem' }} />
+                </motion.div>
 
                 {/* Title with glitch */}
                 <motion.h1
