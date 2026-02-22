@@ -56,7 +56,7 @@ export default function Landing() {
             {particles.map(p => <FloatingParticle key={p.id} {...p} />)}
 
             {/* Hero Content */}
-            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center gap-12" style={{ paddingTop: '12rem', paddingBottom: '8rem' }}>
+            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center gap-12" style={{ paddingTop: '7rem', paddingBottom: '8rem' }}>
                 {/* Subtitle */}
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}
