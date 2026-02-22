@@ -56,13 +56,13 @@ export default function Landing() {
             {particles.map(p => <FloatingParticle key={p.id} {...p} />)}
 
             {/* Hero Content */}
-            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center gap-12 py-32">
+            <div className="relative z-10 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center gap-12 pt-48 pb-32">
                 {/* Subtitle */}
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.6 }}
-                    style={{ marginTop: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                    style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
                 >
                     <p className="font-heading text-xs tracking-[0.3em] uppercase text-neon-blue/70" style={{ margin: 0 }}>
                         CODEHUB PRESENTS
