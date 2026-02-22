@@ -13,11 +13,11 @@ const pageTransition = {
 const categories = ['All', 'Technical', 'Non-Technical', 'Gaming', 'Workshops'];
 
 const events = [
-    { id: 1, title: 'Strong Password Builder', category: 'Technical', emoji: '🔒', date: 'March 11, 2026', time: '10:00 AM - 11:00 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'Design strong, secure passwords by understanding real-world password vulnerabilities and security principles.' },
-    { id: 2, title: 'Cyber Security Quiz', category: 'Technical', emoji: '🤖', date: 'March 11, 2026', time: '11:00 AM - 12:00 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'Test participants’ understanding of cyber security concepts, threats, and defenses.' },
-    { id: 3, title: 'See it - Name it', category: 'Technical', emoji: '🤔', date: 'March 11, 2026', time: '1:10 PM - 2:10 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'Test participants’ ability to recognize logos related to technology, cybersecurity, software, and global brands.' },
-    { id: 4, title: 'Need for Speed', category: 'Technical', emoji: '⚡', date: 'March 11, 2026', time: '2:10 AM - 3:10 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'Measure typing speed and accuracy under intense time pressure.' },
-    { id: 5, title: 'IPL Mock Auction', category: 'Non-Technical', emoji: '🏏', date: 'March 11, 2026', time: '3:10 AM - 4:10 PM', venue: 'Lab 102', team: '4 Members', prize: '₹110', description: 'Build the best-performing team within a fixed budget by strategically selecting players and optimizing resources.' }
+    { id: 1, title: 'Hang the Hacker', category: 'Technical', emoji: '🔒', date: 'March 11, 2026', time: '10:00 AM - 11:00 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'Simulates real-world password guessing attacks using a fun hangman-style game.' },
+    { id: 2, title: 'Cyber Security Quiz', category: 'Technical', emoji: '🤖', date: 'March 11, 2026', time: '11:00 AM - 12:00 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'A fast-paced quiz covering real-world cyber security topics, focusing on general awareness and fundamental knowledge.' },
+    { id: 3, title: 'See it - Name it', category: 'Technical', emoji: '🤔', date: 'March 11, 2026', time: '1:10 PM - 2:10 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'Participants will be shown logos without names and must identify them correctly and quickly.' },
+    { id: 4, title: 'Need for Speed', category: 'Technical', emoji: '⚡', date: 'March 11, 2026', time: '2:10 AM - 3:10 PM', venue: 'Lab 102', team: 'Individual', prize: '₹110', description: 'Participants are given a passage to type within a fixed time limit.' },
+    { id: 5, title: 'IPL Mock Auction', category: 'Non-Technical', emoji: '🏏', date: 'March 11, 2026', time: '3:10 AM - 4:10 PM', venue: 'Lab 102', team: '4 Members', prize: '₹110', description: 'Simulates an IPL-style auction, focusing purely on decision-making, resource allocation, and strategic optimization' }
 ];
 
 function EventModal({ event, onClose }) {
