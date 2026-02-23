@@ -22,6 +22,8 @@ const ElectricBorder = ({
   speed = 1,
   chaos = 0.12,
   borderRadius = 24,
+  displacement = 5,
+  borderOffset = 15,
   className,
   style
 }) => {
@@ -171,13 +173,13 @@ const ElectricBorder = ({
     const amplitude = chaos;
     const frequency = 10;
     const baseFlatness = 0;
-    const displacement = 60;
-    const borderOffset = 60;
+    const currentDisplacement = displacement;
+    const currentBorderOffset = borderOffset;
 
     const updateSize = () => {
       const rect = container.getBoundingClientRect();
-      const width = rect.width + borderOffset * 2;
-      const height = rect.height + borderOffset * 2;
+      const width = rect.width + currentBorderOffset * 2;
+      const height = rect.height + currentBorderOffset * 2;
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = width * dpr;
@@ -208,11 +210,11 @@ const ElectricBorder = ({
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
-      const scale = displacement;
-      const left = borderOffset;
-      const top = borderOffset;
-      const borderWidth = width - 2 * borderOffset;
-      const borderHeight = height - 2 * borderOffset;
+      const scale = currentDisplacement;
+      const left = currentBorderOffset;
+      const top = currentBorderOffset;
+      const borderWidth = width - 2 * currentBorderOffset;
+      const borderHeight = height - 2 * currentBorderOffset;
       const maxRadius = Math.min(borderWidth, borderHeight) / 2;
       const radius = Math.min(borderRadius, maxRadius);
 
@@ -249,8 +251,8 @@ const ElectricBorder = ({
           baseFlatness
         );
 
-        const displacedX = point.x + xNoise * scale;
-        const displacedY = point.y + yNoise * scale;
+        const displacedX = point.x + xNoise * currentDisplacement;
+        const displacedY = point.y + yNoise * currentDisplacement;
 
         if (i === 0) {
           ctx.moveTo(displacedX, displacedY);
@@ -280,7 +282,7 @@ const ElectricBorder = ({
       }
       resizeObserver.disconnect();
     };
-  }, [color, speed, chaos, borderRadius, octavedNoise, getRoundedRectPoint]);
+  }, [color, speed, chaos, borderRadius, octavedNoise, getRoundedRectPoint, displacement, borderOffset]);
 
   return (
     <div

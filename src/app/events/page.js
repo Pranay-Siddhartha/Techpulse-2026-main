@@ -43,6 +43,8 @@ function EventModal({ event, onClose }) {
                     speed={0.8}
                     chaos={0.07}
                     borderRadius={16}
+                    displacement={6}
+                    borderOffset={10}
                     className="w-full"
                 >
                     <div className="glass-card !border-neon-purple/40 w-full overflow-y-auto" style={{ padding: '2rem' }}>
@@ -138,38 +140,29 @@ export default function Events() {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 transition={{ duration: 0.3 }}
                                 onClick={() => setSelectedEvent(event)}
-                                className="w-full h-full"
+                                className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300 w-full h-full"
+                                style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
                             >
-                                <ElectricBorder
-                                    color="#a855f7"
-                                    speed={0.6}
-                                    chaos={0.05}
-                                    borderRadius={12}
-                                    className="w-full h-full"
-                                >
-                                    <div className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300 w-full h-full" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                                            <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
-                                            <div>
-                                                <h3 className="font-heading font-bold text-white group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.875rem', margin: 0 }}>{event.title}</h3>
-                                                <span className="font-heading" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(168, 85, 247, 0.6)' }}>{event.category}</span>
-                                            </div>
-                                        </div>
-
-                                        <div style={{ marginBottom: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>📅 {event.date} • {event.time}</p>
-                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>📍 {event.venue}</p>
-                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>👥 {event.team}</p>
-                                        </div>
-
-                                        <div style={{ display: 'flex', alignItems: 'center', justify_content: 'space-between', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                                            <span className="font-heading font-bold text-neon-purple" style={{ fontSize: '0.875rem' }}>{event.prize}</span>
-                                            <span className="font-heading group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'rgba(0, 240, 255, 0.5)' }}>
-                                                View Details →
-                                            </span>
-                                        </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                                    <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
+                                    <div>
+                                        <h3 className="font-heading font-bold text-white group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.875rem', margin: 0 }}>{event.title}</h3>
+                                        <span className="font-heading" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(168, 85, 247, 0.6)' }}>{event.category}</span>
                                     </div>
-                                </ElectricBorder>
+                                </div>
+
+                                <div style={{ marginBottom: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>📅 {event.date} • {event.time}</p>
+                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>📍 {event.venue}</p>
+                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>👥 {event.team}</p>
+                                </div>
+
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                                    <span className="font-heading font-bold text-neon-purple" style={{ fontSize: '0.875rem' }}>{event.prize}</span>
+                                    <span className="font-heading group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'rgba(0, 240, 255, 0.5)' }}>
+                                        View Details →
+                                    </span>
+                                </div>
                             </motion.div>
                         ))}
                     </AnimatePresence>
