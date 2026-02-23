@@ -91,13 +91,13 @@ export default function Landing() {
                     transition={{ duration: 0.4 }}
                     className="w-full flex justify-center"
                 >
-                    <div className="text-center max-w-2xl w-full text-white/50 text-lg leading-relaxed">
+                    <div className="text-center max-w-2xl w-full text-white/50 text-lg leading-relaxed" style={{ paddingLeft: '2rem', paddingRight: '2rem' }}>
                         <DecryptedText
                             text="Experience a unique mix of technical and non-technical challenges designed to test your cybersecurity skills, problem-solving, and strategic thinking."
                             animateOn="auto"
                             revealDirection="start"
                             sequential={true}
-                            speed={30}
+                            speed={5}
                             maxIterations={20}
                             className="text-white"
                             parentClassName="inline-block"
