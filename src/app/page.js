@@ -95,7 +95,7 @@ export default function Landing() {
                         <DecryptedText
                             text="Experience a unique mix of technical and non-technical challenges designed to test your cybersecurity skills, problem-solving, and strategic thinking."
                             animateOn="auto"
-                            revealDirection="center"
+                            revealDirection="start"
                             sequential={true}
                             speed={30}
                             maxIterations={20}
