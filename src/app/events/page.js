@@ -40,14 +40,14 @@ function EventModal({ event, onClose }) {
             >
                 <ElectricBorder
                     color="#a855f7"
-                    speed={0.8}
-                    chaos={0.07}
+                    speed={1}
+                    chaos={0.1}
                     borderRadius={16}
-                    displacement={6}
-                    borderOffset={10}
-                    className="w-full"
+                    displacement={8}
+                    borderOffset={12}
+                    className="w-full h-full"
                 >
-                    <div className="glass-card !border-neon-purple/40 w-full overflow-y-auto" style={{ padding: '2rem' }}>
+                    <div className="glass-card !border-none w-full h-full overflow-y-auto" style={{ padding: '2rem' }}>
                         <div className="flex items-start justify-between mb-6">
                             <div className="flex items-center gap-3">
                                 <span className="text-4xl">{event.emoji}</span>
