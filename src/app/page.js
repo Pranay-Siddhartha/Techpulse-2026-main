@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import DecryptedText from '@/components/DecryptedText';
+import CountUp from '@/components/CountUp';
 
 const pageTransition = {
     initial: { opacity: 0, y: 30 },
@@ -132,13 +133,20 @@ export default function Landing() {
                     className="flex justify-center items-center gap-12"
                 >
                     {[
-                        { value: '5', label: 'Events' },
-                        { value: '40+', label: 'Participants' },
-                        { value: 'upto ₹2K', label: 'Prizes' },
+                        { to: 5, label: 'Events' },
+                        { to: 40, label: 'Participants', suffix: '+' },
+                        { to: 2000, label: 'Prizes', prefix: 'upto ₹' },
                     ].map((stat, i) => (
                         <div key={i} className="text-center">
                             <p className="font-heading text-2xl md:text-3xl font-bold bg-gradient-to-b from-neon-purple to-neon-blue bg-clip-text text-transparent">
-                                {stat.value}
+                                {stat.prefix && stat.prefix}
+                                <CountUp
+                                    from={0}
+                                    to={stat.to}
+                                    duration={0.6}
+                                    separator=","
+                                />
+                                {stat.suffix && stat.suffix}
                             </p>
                             <p className="text-white/30 text-xs font-heading tracking-wider mt-1">{stat.label}</p>
                         </div>
