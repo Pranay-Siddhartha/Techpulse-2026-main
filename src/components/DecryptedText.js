@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 
 const styles = {
     wrapper: {
@@ -147,6 +147,13 @@ export default function DecryptedText({
             if (interval) clearInterval(interval);
         };
     }, [isHovering, text, speed, maxIterations, sequential, revealDirection, characters, useOriginalCharsOnly]);
+
+    useEffect(() => {
+        if (animateOn === 'auto') {
+            setIsHovering(true);
+            setHasAnimated(true);
+        }
+    }, [animateOn]);
 
     useEffect(() => {
         if (animateOn !== 'view' && animateOn !== 'both') return;

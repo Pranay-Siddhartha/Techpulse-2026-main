@@ -88,18 +88,20 @@ export default function Landing() {
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
+                    transition={{ duration: 0.4 }}
                     className="w-full flex justify-center"
                 >
                     <div className="text-center max-w-2xl w-full text-white/50 text-lg leading-relaxed">
                         <DecryptedText
-                            text="An event featuring a mix of technical and non-technical challenges. Designed to test cybersecurity awareness, problem-solving, speed, and strategic thinking."
-                            animateOn="view"
+                            text="Experience a unique mix of technical and non-technical challenges designed to test your cybersecurity skills, problem-solving, and strategic thinking."
+                            animateOn="auto"
                             revealDirection="center"
-                            speed={40}
+                            sequential={true}
+                            speed={30}
                             maxIterations={20}
                             className="text-white"
-                            encryptedClassName="text-neon-blue/80"
+                            parentClassName="inline-block"
+                            encryptedClassName="text-neon-blue font-mono"
                         />
                     </div>
                 </motion.div>
