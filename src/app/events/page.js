@@ -36,57 +36,56 @@ function EventModal({ event, onClose }) {
                 exit={{ scale: 0.85, opacity: 0 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                 onClick={(e) => e.stopPropagation()}
-                className="max-w-lg w-full max-h-[80vh]"
+                className="max-w-lg w-full max-h-[80vh] flex"
             >
                 <ElectricBorder
                     color="#a855f7"
                     speed={1}
                     chaos={0.1}
                     borderRadius={16}
-                    displacement={8}
-                    borderOffset={12}
-                    className="w-full h-full"
+                    displacement={10}
+                    borderOffset={20}
+                    className="glass-card !border-none w-full h-full overflow-y-auto"
+                    style={{ padding: '2rem' }}
                 >
-                    <div className="glass-card !border-none w-full h-full overflow-y-auto" style={{ padding: '2rem' }}>
-                        <div className="flex items-start justify-between mb-6">
-                            <div className="flex items-center gap-3">
-                                <span className="text-4xl">{event.emoji}</span>
-                                <div>
-                                    <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
-                                    <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
-                                </div>
+                    <div className="flex items-start justify-between mb-6">
+                        <div className="flex items-center gap-3">
+                            <span className="text-4xl">{event.emoji}</span>
+                            <div>
+                                <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+                                <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
                             </div>
-                            <button
-                                onClick={onClose}
-                                className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
-                            >
-                                ✕
-                            </button>
                         </div>
+                        <button
+                            onClick={onClose}
+                            className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
+                        >
+                            ✕
+                        </button>
+                    </div>
 
-                        <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
+                    <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
 
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                            {[
-                                { label: 'Date', value: event.date },
-                                { label: 'Time', value: event.time },
-                                { label: 'Venue', value: event.venue },
-                                { label: 'Team', value: event.team },
-                            ].map((item, i) => (
-                                <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
-                                    <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
-                                    <p className="text-sm text-white/80 font-medium">{item.value}</p>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
-                            <div className="flex items-center gap-2">
-                                <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
-                                <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                        {[
+                            { label: 'Date', value: event.date },
+                            { label: 'Time', value: event.time },
+                            { label: 'Venue', value: event.venue },
+                            { label: 'Team', value: event.team },
+                        ].map((item, i) => (
+                            <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
+                                <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+                                <p className="text-sm text-white/80 font-medium">{item.value}</p>
                             </div>
-                            <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
+                        <div className="flex items-center gap-2">
+                            <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+                            <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
                         </div>
+                        <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
                     </div>
                 </ElectricBorder>
             </motion.div>
