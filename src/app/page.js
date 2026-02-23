@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import DecryptedText from '@/components/DecryptedText';
 
 const pageTransition = {
     initial: { opacity: 0, y: 30 },
@@ -90,10 +91,17 @@ export default function Landing() {
                     transition={{ delay: 0.8, duration: 0.6 }}
                     className="w-full flex justify-center"
                 >
-                    <p className="text-center max-w-2xl w-full text-white/50 text-lg leading-relaxed">
-                        An event featuring a mix of technical and non-technical challenges.
-                        Designed to test cybersecurity awareness, problem-solving, speed, and strategic thinking.
-                    </p>
+                    <div className="text-center max-w-2xl w-full text-white/50 text-lg leading-relaxed">
+                        <DecryptedText
+                            text="An event featuring a mix of technical and non-technical challenges. Designed to test cybersecurity awareness, problem-solving, speed, and strategic thinking."
+                            animateOn="view"
+                            revealDirection="center"
+                            speed={40}
+                            maxIterations={20}
+                            className="text-white"
+                            encryptedClassName="text-neon-blue/80"
+                        />
+                    </div>
                 </motion.div>
 
                 {/* CTA Buttons */}
