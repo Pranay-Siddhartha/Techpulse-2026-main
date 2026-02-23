@@ -59,7 +59,7 @@ export default function Landing() {
             <div className="absolute inset-x-0 top-0 h-[600px] pointer-events-none opacity-50" style={{ zIndex: 1 }}>
                 <LightRays
                     raysOrigin="top-center"
-                    raysColor="#ffffff"
+                    raysColor="#00f0ff"
                     raysSpeed={1}
                     lightSpread={0.5}
                     rayLength={3}
