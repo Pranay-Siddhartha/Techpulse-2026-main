@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import DecryptedText from '@/components/DecryptedText';
 import CountUp from '@/components/CountUp';
+import LightRays from '@/components/LightRays';
 
 const pageTransition = {
     initial: { opacity: 0, y: 30 },
@@ -53,6 +54,25 @@ export default function Landing() {
             {/* Radial gradient overlay */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(168,85,247,0.15)_0%,_transparent_70%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(0,240,255,0.1)_0%,_transparent_60%)]" />
+
+            {/* Light Rays Background */}
+            <div className="absolute inset-x-0 top-0 h-[600px] pointer-events-none opacity-50" style={{ zIndex: 1 }}>
+                <LightRays
+                    raysOrigin="top-center"
+                    raysColor="#ffffff"
+                    raysSpeed={1}
+                    lightSpread={0.5}
+                    rayLength={3}
+                    followMouse={true}
+                    mouseInfluence={0.1}
+                    noiseAmount={0}
+                    distortion={0}
+                    className="custom-rays"
+                    pulsating={false}
+                    fadeDistance={1}
+                    saturation={1}
+                />
+            </div>
 
             {/* Floating particles */}
             {particles.map(p => <FloatingParticle key={p.id} {...p} />)}
