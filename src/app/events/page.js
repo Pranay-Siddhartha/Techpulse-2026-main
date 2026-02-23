@@ -35,47 +35,52 @@ function EventModal({ event, onClose }) {
                 exit={{ scale: 0.85, opacity: 0 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                 onClick={(e) => e.stopPropagation()}
-                className="glass-card !border-neon-purple/40 max-w-xl w-full max-h-[85vh] overflow-y-auto neon-glow-purple"
-                style={{ padding: '2.5rem' }}
+                className="glass-card !border-neon-purple/40 max-w-lg w-full max-h-[80vh] overflow-y-auto neon-glow-purple"
+                style={{ padding: '2rem' }}
             >
-                <div className="flex items-start justify-between mb-8">
-                    <div className="flex items-center gap-4">
-                        <span className="text-5xl">{event.emoji}</span>
+                <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-3">
+                        <span className="text-4xl">{event.emoji}</span>
                         <div>
-                            <h2 className="font-heading text-2xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
-                            <span className="text-sm font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+                            <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+                            <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
                         </div>
                     </div>
                     <button
                         onClick={onClose}
-                        className="text-white/40 hover:text-neon-purple transition-colors text-3xl leading-none"
+                        className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
                     >
                         ✕
                     </button>
                 </div>
 
-                <p className="text-white/60 text-base leading-relaxed mb-8">{event.description}</p>
+                <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
 
-                <div className="grid grid-cols-2 gap-5 mb-8">
+                <div className="grid grid-cols-2 gap-4 mb-6 ml-2">
                     {[
                         { label: 'Date', value: event.date },
                         { label: 'Time', value: event.time },
                         { label: 'Venue', value: event.venue },
                         { label: 'Team', value: event.team },
                     ].map((item, i) => (
-                        <div key={i} className="bg-dark-bg/60 rounded-lg p-4 border border-neon-purple/10">
-                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-2">{item.label}</p>
-                            <p className="text-base text-white/80 font-medium">{item.value}</p>
+                        <div
+                            key={i}
+                            className="bg-dark-bg/60 rounded-lg px-10 py-5 
+                                        border border-neon-purple/10 
+                                        hover:border-neon-purple/30 transition shadow-inner"
+                        >
+                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
                         </div>
                     ))}
                 </div>
 
-                <div className="flex items-center justify-between" style={{ marginTop: '2rem' }}>
+                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
                     <div className="flex items-center gap-2">
                         <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
-                        <span className="font-heading text-xl font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
                     </div>
-                    <Link href="/register" className="neon-btn !py-2.5 !px-8 !text-sm">Register</Link>
+                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
                 </div>
             </motion.div>
         </motion.div>
