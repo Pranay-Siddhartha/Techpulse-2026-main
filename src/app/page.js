@@ -122,9 +122,9 @@ export default function Landing() {
                     className="flex justify-center items-center gap-12"
                 >
                     {[
-                        { value: '20+', label: 'Events' },
-                        { value: '1000+', label: 'Participants' },
-                        { value: '₹50K', label: 'Prizes' },
+                        { value: '5', label: 'Events' },
+                        { value: '40+', label: 'Participants' },
+                        { value: 'upto ₹2K', label: 'Prizes' },
                     ].map((stat, i) => (
                         <div key={i} className="text-center">
                             <p className="font-heading text-2xl md:text-3xl font-bold bg-gradient-to-b from-neon-purple to-neon-blue bg-clip-text text-transparent">
