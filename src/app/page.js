@@ -100,7 +100,7 @@ export default function Landing() {
                             sequential={true}
                             speed={5}
                             maxIterations={20}
-                            className="text-white"
+                            className="text-white font-heading"
                             parentClassName="inline-block"
                             encryptedClassName="text-neon-blue font-mono"
                         />
