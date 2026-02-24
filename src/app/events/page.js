@@ -54,7 +54,7 @@ function EventModal({ event, onClose }) {
                     </button>
                 </div>
 
-                <p className="text-white/60 text-sm leading-relaxed mb-6" style={{ marginBottom: '1rem', marginTop: '1rem',marginLeft:"0.4rem" }}>{event.description}</p>
+                <p className="text-white/60 text-sm leading-relaxed mb-6" style={{ marginBottom: '1rem', marginTop: '1rem', marginLeft: "0.4rem" }}>{event.description}</p>
 
                 <div className="grid grid-cols-2 gap-4 mb-6 ml-2">
                     {[
@@ -66,7 +66,7 @@ function EventModal({ event, onClose }) {
                         <div
                             key={i}
                             className="bg-dark-bg/60 rounded-lg border border-neon-purple/10 hover:border-neon-purple/30 transition shadow-inner"
-                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem',paddingTop:'0.5rem',paddingBottom:'0.5rem'}e}
+                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem', paddingTop: '0.5rem', paddingBottom: '0.5rem' }}
                         >
                             <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
                             <p className="text-sm text-white/80 font-medium">{item.value}</p>
