@@ -43,7 +43,7 @@ export default function Register() {
                             Click below to register and complete your payment on KonfHub.
                         </p>
                         <a
-                            href="https://konfhub.com"
+                            href="https://techpulse2026.netlify.app/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="neon-btn"

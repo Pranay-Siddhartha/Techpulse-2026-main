@@ -66,7 +66,7 @@ function EventModal({ event, onClose }) {
                         <div
                             key={i}
                             className="bg-dark-bg/60 rounded-lg border border-neon-purple/10 hover:border-neon-purple/30 transition shadow-inner"
-                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem',paddingTop:'0.5rem',paddingBottom:'0.5rem'}}
+                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem',paddingTop:'0.5rem',paddingBottom:'0.5rem'}e}
                         >
                             <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
                             <p className="text-sm text-white/80 font-medium">{item.value}</p>
