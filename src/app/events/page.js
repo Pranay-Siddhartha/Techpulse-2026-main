@@ -79,6 +79,7 @@ function EventModal({ event, onClose }) {
                         <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
                         <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
                     </div>
+
                     <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
                 </div>
             </motion.div>

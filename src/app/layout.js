@@ -18,9 +18,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-    title: 'Codehub - TechPulse 2026',
-    description:
-        'TechPulse — The ultimate cyberpunk college tech fest. Code, compete, and create in a neon-drenched world of innovation.',
+    title: 'Codehub - TechPulse 2026'
 };
 
 export default function RootLayout({ children }) {
