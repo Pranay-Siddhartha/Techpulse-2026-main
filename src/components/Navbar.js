@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -17,6 +17,39 @@ const navLinks = [
 export default function Navbar() {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
+    const [hackTime, setHackTime] = useState(null);
+
+    useEffect(() => {
+        let interval;
+        const updateTimer = () => {
+            const start = localStorage.getItem('hth_hack_start');
+            if (start) {
+                const elapsed = Date.now() - parseInt(start, 10);
+                setHackTime(elapsed);
+            } else {
+                setHackTime(null);
+            }
+        };
+
+        updateTimer();
+        interval = setInterval(updateTimer, 50);
+
+        window.addEventListener('hth_timer_update', updateTimer);
+
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener('hth_timer_update', updateTimer);
+        };
+    }, [pathname]);
+
+    const formatTime = (ms) => {
+        if (ms === null) return null;
+        const totalSeconds = Math.floor(ms / 1000);
+        const m = Math.floor(totalSeconds / 60);
+        const s = totalSeconds % 60;
+        const milliseconds = ms % 1000;
+        return `${m}:${s.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
+    };
 
     return (
         <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 glass-card border-neon-purple/30">
@@ -36,6 +69,14 @@ export default function Navbar() {
                         <span className="text-neon-blue neon-text-blue">hub</span>
                     </span>
                 </Link>
+
+                {/* Global Hack Timer */}
+                {hackTime !== null && (
+                    <div className="hidden md:flex items-center gap-2 rounded-full bg-neon-purple/10 border border-neon-purple/30 shadow-[0_0_10px_rgba(168,85,247,0.2)]" style={{ padding: '0.5rem 1.5rem' }}>
+                        <span className="text-[10px] md:text-xs uppercase tracking-widest text-neon-purple/80 font-heading">Player's hack time:</span>
+                        <span className="font-mono text-sm font-bold text-white tracking-widest">{formatTime(hackTime)}</span>
+                    </div>
+                )}
 
                 {/* Desktop links */}
                 <div className="hidden md:flex items-center gap-9">
@@ -92,6 +133,12 @@ export default function Navbar() {
                         className="md:hidden overflow-hidden glass-card !rounded-none !border-x-0 !border-t-0"
                     >
                         <div className="px-6 py-4 flex flex-col gap-4">
+                            {hackTime !== null && (
+                                <div className="flex items-center justify-between border-b border-neon-purple/20 pb-4 mb-2">
+                                    <span className="text-xs uppercase tracking-widest text-neon-purple/80 font-heading">Player's hack time:</span>
+                                    <span className="font-mono text-sm font-bold text-white">{formatTime(hackTime)}</span>
+                                </div>
+                            )}
                             {navLinks.map(link => (
                                 <Link
                                     key={link.path}

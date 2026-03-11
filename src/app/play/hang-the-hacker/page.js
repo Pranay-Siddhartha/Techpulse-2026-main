@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
@@ -12,9 +12,10 @@ const GAME_DATA = [
         description: "Target relies on predictable patterns. Names, dates, and common words.",
         passwords: [
             { word: "QWERTY", clue: "The most basic keyboard walk." },
-            { word: "JOHN1990", clue: "A common name and birth year combination.", isAlphanumeric: true },
+            { word: "123456", clue: "The most basic numeric sequence.", isAlphanumeric: true },
             { word: "PASSWORD", clue: "The most notoriously bad choice." },
-            { word: "SUNSHINE", clue: "A happy, common dictionary word." }
+            { word: "ADMIN", clue: "The default account for administrators." },
+            { word: "GUEST", clue: "The default account everyone leaves enabled." }
         ]
     },
     {
@@ -22,10 +23,11 @@ const GAME_DATA = [
         title: "Level 2: Moderate Security",
         description: "Target has read some guidelines. Combining words, numbers, and basic symbols.",
         passwords: [
-            { word: "ADMIN123", clue: "Default credentials for a lazy administrator.", isAlphanumeric: true },
-            { word: "H@CKER99", clue: "Thinks they are l33t, uses basic symbol substitution.", isAlphanumeric: true },
-            { word: "P@SSW0RD", clue: "Symbol substitution for vowels.", isAlphanumeric: true },
-            { word: "M0NKEY!", clue: "A common animal, leetspeak, and an exclamation mark.", isAlphanumeric: true }
+            { word: "ADMIN123", clue: "Default credentials for a lazy administrator followed by a numerical sequence.", isAlphanumeric: true },
+            { word: "LETMEIN", clue: "A literal demand you might shout at a stubborn locked door." },
+            { word: "HACKER", clue: "A common term for someone who breaks into computer systems." },
+            { word: "SERVER", clue: "The backbone of any network." },
+            { word: "W3LCOM3", clue: "A friendly greeting, with vowels turned to numbers." }
         ]
     },
     {
@@ -33,10 +35,11 @@ const GAME_DATA = [
         title: "Level 3: Advanced Encryption",
         description: "Stronger passwords, but still vulnerable if you understand the pattern.",
         passwords: [
-            { word: "R00T!@#", clue: "Superuser account with basic special character sequence.", isAlphanumeric: true },
-            { word: "S3CUR1TY*", clue: "Replacing vowels with numbers, ending with a star.", isAlphanumeric: true },
-            { word: "C0MPL3X??", clue: "Self-proclaimed complexity.", isAlphanumeric: true },
-            { word: "W1NT3R24$", clue: "Season + Year + Currency Symbol pattern.", isAlphanumeric: true }
+            { word: "CHANGEME", clue: "The exact instruction given by the system administrator, ironically kept as the permanent credential." },
+            { word: "QAZWSX", clue: "A zig-zag journey down the first two columns of the keyboard." },
+            { word: "RASPBERRY", clue: "The famously unchanged default password for the 'pi' user on a wildly popular microcomputer." },
+            { word: "DEFAULT", clue: "The standard factory setting you are supposed to immediately replace." },
+            { word: "SYSTEMADMIN", clue: "The title of the very IT person who will yell at you for choosing this as your login." }
         ]
     }
 ];
@@ -48,8 +51,9 @@ const SYMBOLS = "!@#$%^&*?".split('');
 
 export default function HangTheHackerGame() {
     // --- State ---
-    const [gameState, setGameState] = useState('start'); // start, playing, round_won, round_lost, game_over, victory
+    const [gameState, setGameState] = useState('start'); // start, playing, password_cracked, round_won, round_lost, game_over, victory
     const [currentRound, setCurrentRound] = useState(1);
+    const [currentPasswordIndex, setCurrentPasswordIndex] = useState(0);
     const [targetPassword, setTargetPassword] = useState(null);
     const [guessedChars, setGuessedChars] = useState(new Set());
     const [health, setHealth] = useState(MAX_HEALTH);
@@ -63,13 +67,30 @@ export default function HangTheHackerGame() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
 
+    // --- Anti-Cheat Ground Truth ---
+    const gt = useRef({
+        guessed: new Set(),
+        hints: 0,
+        startTime: null,
+        totalTime: 0,
+        guesses: 0,
+        correct: 0,
+        isProcessing: false,
+    });
+
     // --- Timers ---
     useEffect(() => {
         let timer;
         if (gameState === 'playing') {
             timer = setInterval(() => {
-                setTimeElapsed((prev) => prev + 1);
-            }, 1000);
+                const hackStart = localStorage.getItem('hth_hack_start');
+                if (hackStart) {
+                    setTimeElapsed(Date.now() - parseInt(hackStart, 10));
+                } else if (gt.current.startTime) {
+                    // Fallback
+                    setTimeElapsed(performance.now() - gt.current.startTime);
+                }
+            }, 50);
         }
         return () => clearInterval(timer);
     }, [gameState]);
@@ -77,9 +98,35 @@ export default function HangTheHackerGame() {
     // --- Game Logic ---
     const startRound = useCallback((roundNum) => {
         const roundData = GAME_DATA[roundNum - 1];
-        const randomPasswordContext = roundData.passwords[Math.floor(Math.random() * roundData.passwords.length)];
 
-        setTargetPassword(randomPasswordContext);
+        setTargetPassword(roundData.passwords[0]);
+        setCurrentPasswordIndex(0);
+
+        gt.current.guessed = new Set();
+        gt.current.isProcessing = false;
+
+        if (roundNum === 1) {
+            let hackStart = localStorage.getItem('hth_hack_start');
+            if (!hackStart) {
+                hackStart = Date.now().toString();
+                localStorage.setItem('hth_hack_start', hackStart);
+                window.dispatchEvent(new Event('hth_timer_update'));
+            }
+
+            gt.current.hints = 0;
+            gt.current.guesses = 0;
+            gt.current.correct = 0;
+            gt.current.totalTime = 0;
+            gt.current.startTime = performance.now();
+            setHintsUsed(0);
+            setTotalGuesses(0);
+            setCorrectGuessesCount(0);
+            const elapsedMs = Date.now() - parseInt(hackStart, 10);
+            setTimeElapsed(elapsedMs);
+            setSubmitSuccess(false);
+            setPlayerName('');
+        }
+
         setGuessedChars(new Set());
         setHealth(MAX_HEALTH);
         setGameState('playing');
@@ -87,60 +134,131 @@ export default function HangTheHackerGame() {
     }, []);
 
     const handleGuess = useCallback((char) => {
-        if (gameState !== 'playing' || guessedChars.has(char)) return;
+        if (gameState !== 'playing' || gt.current.isProcessing || gt.current.guessed.has(char)) return;
 
-        const newGuessedChars = new Set(guessedChars);
-        newGuessedChars.add(char);
-        setGuessedChars(newGuessedChars);
-        setTotalGuesses((prev) => prev + 1);
+        gt.current.isProcessing = true;
+        gt.current.guessed.add(char);
+        gt.current.guesses += 1;
 
-        if (targetPassword.word.includes(char)) {
+        setGuessedChars(new Set(gt.current.guessed));
+        setTotalGuesses(gt.current.guesses);
+
+        const decodedWord = targetPassword ? (targetPassword.w ? atob(targetPassword.w) : targetPassword.word) : '';
+
+        if (decodedWord.includes(char)) {
             // Correct guess
-            setCorrectGuessesCount((prev) => prev + 1);
+            gt.current.correct += 1;
+            setCorrectGuessesCount(gt.current.correct);
 
             // Check win condition
-            const isWin = targetPassword.word.split('').every(c => newGuessedChars.has(c));
-            if (isWin) {
-                setTimeout(() => setGameState('round_won'), 500);
+            const targetChars = new Set(decodedWord.split(''));
+            let win = true;
+            targetChars.forEach(c => {
+                if (!gt.current.guessed.has(c)) win = false;
+            });
+
+            if (win) {
+                const roundData = GAME_DATA[currentRound - 1];
+                if (currentPasswordIndex + 1 < roundData.passwords.length) {
+                    setGameState('password_cracked');
+                } else {
+                    setGameState('round_won');
+                }
             }
         } else {
             // Incorrect guess
-            const newHealth = health - 1;
-            setHealth(newHealth);
-
-            // Check lose condition
-            if (newHealth <= 0) {
-                setTimeout(() => setGameState('round_lost'), 500);
-            }
+            setHealth(prevHealth => {
+                const newHealth = prevHealth - 1;
+                if (newHealth <= 0) {
+                    setGameState('round_lost');
+                }
+                return newHealth;
+            });
         }
-    }, [gameState, guessedChars, targetPassword, health]);
+        gt.current.isProcessing = false;
+    }, [gameState, targetPassword, currentRound, currentPasswordIndex]);
 
-    const useHint = () => {
-        if (gameState !== 'playing' || hintsUsed >= 2) return;
-        setHintsUsed(prev => prev + 1);
+    const handleHintClick = (e) => {
+        console.log("HINT CLICKED - state:", gameState, "hints:", gt.current.hints, "target:", targetPassword);
 
-        // Find an unguessed letter
-        const unguessed = targetPassword.word.split('').filter(c => !guessedChars.has(c));
-        if (unguessed.length > 0) {
-            const randomChar = unguessed[Math.floor(Math.random() * unguessed.length)];
-            handleGuess(randomChar);
+        if (e && e.preventDefault) e.preventDefault();
+
+        if (gameState !== 'playing' || gt.current.hints >= 2 || !targetPassword) {
+            console.log("HINT ABORTED EARLY.");
+            return;
+        }
+
+        try {
+            const decodedWord = targetPassword.w ? atob(targetPassword.w) : targetPassword.word;
+            const unguessed = decodedWord.split('').filter(c => !gt.current.guessed.has(c));
+
+            console.log("Decoded word:", decodedWord, "Unguessed:", unguessed);
+
+            if (unguessed.length > 0) {
+                gt.current.hints += 1;
+                setHintsUsed(gt.current.hints);
+                const randomChar = unguessed[Math.floor(Math.random() * unguessed.length)];
+                console.log("Hint chose character:", randomChar);
+                handleGuess(randomChar);
+            } else {
+                console.log("No unguessed characters found.");
+            }
+        } catch (error) {
+            console.error("HINT CRASHED:", error);
         }
     };
+
+    // --- Keyboard Event Listener ---
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (gameState !== 'playing') return;
+            const char = e.key.toUpperCase();
+            if (ALPHABET.includes(char) || NUMBERS.includes(char) || SYMBOLS.includes(char)) {
+                handleGuess(char);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [gameState, handleGuess]);
 
     const nextRound = () => {
         if (currentRound < GAME_DATA.length) {
             startRound(currentRound + 1);
         } else {
+            const hackStart = localStorage.getItem('hth_hack_start');
+            if (hackStart) {
+                gt.current.totalTime = Date.now() - parseInt(hackStart, 10);
+            } else {
+                gt.current.totalTime = performance.now() - gt.current.startTime;
+            }
+            localStorage.removeItem('hth_hack_start');
+            window.dispatchEvent(new Event('hth_timer_update'));
             setGameState('victory');
         }
+    };
+
+    const nextPassword = () => {
+        const roundData = GAME_DATA[currentRound - 1];
+        const nextIndex = currentPasswordIndex + 1;
+        setCurrentPasswordIndex(nextIndex);
+        setTargetPassword(roundData.passwords[nextIndex]);
+
+        gt.current.guessed = new Set();
+        gt.current.isProcessing = false;
+
+        setGuessedChars(new Set());
+        setHealth(MAX_HEALTH);
+        setGameState('playing');
     };
 
     const renderKeyboardRow = (chars) => (
         <div className="flex flex-wrap justify-center" style={{ gap: '1rem', marginBottom: '1.5rem' }}>
             {chars.map(char => {
                 const isGuessed = guessedChars.has(char);
-                const isCorrect = isGuessed && targetPassword?.word.includes(char);
-                const isWrong = isGuessed && !targetPassword?.word.includes(char);
+                const decodedWord = targetPassword ? (targetPassword.w ? atob(targetPassword.w) : targetPassword.word) : '';
+                const isCorrect = isGuessed && decodedWord.includes(char);
+                const isWrong = isGuessed && !decodedWord.includes(char);
 
                 let btnClass = "flex items-center justify-center font-heading text-lg font-bold rounded-md transition-all duration-300 border ";
 
@@ -172,10 +290,12 @@ export default function HangTheHackerGame() {
         return Math.round((correctGuessesCount / totalGuesses) * 100);
     };
 
-    const formatTime = (seconds) => {
-        const m = Math.floor(seconds / 60);
-        const s = seconds % 60;
-        return `${m}:${s.toString().padStart(2, '0')}`;
+    const formatTime = (ms) => {
+        const totalSeconds = Math.floor(ms / 1000);
+        const m = Math.floor(totalSeconds / 60);
+        const s = totalSeconds % 60;
+        const milliseconds = Math.floor(ms % 1000);
+        return `${m}:${s.toString().padStart(2, '0')}.${milliseconds.toString().padStart(3, '0')}`;
     };
 
     // --- Screens ---
@@ -184,13 +304,14 @@ export default function HangTheHackerGame() {
         <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center max-w-2xl mx-auto glass-card p-8 md:p-12 border-neon-purple/40 neon-glow-purple"
+            className="text-center max-w-2xl mx-auto glass-card p-8 md:p-12 border-neon-purple/40 neon-glow-purple
+            " style={{ padding: '1.5rem' }}
         >
             <div className="text-6xl mb-6 flex justify-center glitch-text" data-text="🔒">🔒</div>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent uppercase tracking-wider">
+            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent uppercase tracking-wider" style={{ letterSpacing: '0.10em', margin: '1rem 0rem' }}>
                 Hang the Hacker
             </h1>
-            <p className="text-white/70 mb-8 leading-relaxed">
+            <p className="text-white/70 mb-12 leading-relaxed" style={{ padding: '1rem', lineHeight: '1.8' }}>
                 Welcome, Operator. Your mission is to bypass security systems using pattern recognition.
                 Guess the target's password before the firewall locks you out. You have 3 levels of increasing difficulty.
             </p>
@@ -204,13 +325,13 @@ export default function HangTheHackerGame() {
     );
 
     const PlayingScreen = () => (
-        <div className="max-w-4xl mx-auto w-full flex flex-col items-center" style={{ gap: '2rem', marginTop: '2rem', marginBottom: '4rem' }}>
+        <div className="max-w-6xl mx-auto w-full flex flex-col items-center" style={{ gap: '2rem', marginTop: '2rem', marginBottom: '4rem', padding: '0 1rem' }}>
             {/* Header info */}
             <div className="w-full flex justify-between items-center bg-dark-bg/60 rounded-xl border border-white/10 glass-effect" style={{ padding: '2rem 1.5rem', marginTop: '4.5rem' }}>
                 <div className="flex items-center gap-4">
                     <div className="text-center">
-                        <span className="text-xs uppercase tracking-widest text-neon-purple/60 font-heading" style={{ marginBottom: '5rem' }}>Connection Status</span>
-                        <div className="flex gap-1 mt-1">
+                        <span className="text-xs uppercase tracking-widest text-neon-purple/60 font-heading">Connection Status</span>
+                        <div className="flex gap-1 mt-4">
                             {Array.from({ length: MAX_HEALTH }).map((_, i) => (
                                 <div
                                     key={i}
@@ -224,17 +345,37 @@ export default function HangTheHackerGame() {
                 <div className="text-center">
                     <h2 className="font-heading text-xl font-bold text-white tracking-widest">{GAME_DATA[currentRound - 1].title}</h2>
                     <span className="text-xs text-white/50">{GAME_DATA[currentRound - 1].description}</span>
+                    <div className="text-neon-purple mt-2 font-mono text-sm tracking-widest uppercase">
+                        Node {currentPasswordIndex + 1} / {GAME_DATA[currentRound - 1].passwords.length}
+                    </div>
                 </div>
 
-                <div className="text-right">
-                    <span className="text-xs uppercase tracking-widest text-neon-blue/60 font-heading block">Time Elapsed</span>
-                    <span className="font-mono text-xl font-bold text-white">{formatTime(timeElapsed)}</span>
+                <div className="flex gap-8 items-center text-right">
+                    <button
+                        onPointerDown={(e) => {
+                            e.preventDefault();
+                            handleHintClick(e);
+                        }}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleHintClick(e);
+                        }}
+                        className={`rounded-lg font-heading tracking-widest text-xs border transition-all shadow-[0_0_10px_rgba(0,240,255,0.2)]
+                            ${hintsUsed < 2 ? 'border-neon-blue text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20' : 'border-white/20 text-white/30 cursor-not-allowed'}`}
+                        style={{ padding: '0.75rem 1.5rem' }}
+                    >
+                        DECRYPT HINT ({2 - hintsUsed} LEFT)
+                    </button>
+                    <div>
+                        <span className="text-xs uppercase tracking-widest text-neon-blue/60 font-heading block">Time Elapsed</span>
+                        <span className="font-mono text-xl font-bold text-white">{formatTime(timeElapsed)}</span>
+                    </div>
                 </div>
             </div>
 
             {/* Target Password Display */}
             <div className="flex flex-wrap justify-center glass-card border-white/5 w-full" style={{ padding: '1rem 2rem', gap: '2rem' }}>
-                {targetPassword?.word.split('').map((char, index) => {
+                {targetPassword && (targetPassword.w ? atob(targetPassword.w) : targetPassword.word).split('').map((char, index) => {
                     const isRevealed = guessedChars.has(char);
                     return (
                         <div
@@ -258,60 +399,55 @@ export default function HangTheHackerGame() {
             </div>
 
             {/* Keyboard */}
-            <div className="w-full max-w-4xl" style={{ marginTop: '2rem' }}>
+            <div className="w-full max-w-6xl px-4" style={{ marginTop: '2rem' }}>
                 {renderKeyboardRow(ALPHABET.slice(0, 13))}
                 {renderKeyboardRow(ALPHABET.slice(13))}
-                {targetPassword?.isAlphanumeric && renderKeyboardRow(NUMBERS)}
-                {targetPassword?.isAlphanumeric && currentRound > 1 && renderKeyboardRow(SYMBOLS)}
+                {(targetPassword?.a || targetPassword?.isAlphanumeric) && renderKeyboardRow(NUMBERS)}
+                {(targetPassword?.a || targetPassword?.isAlphanumeric) && currentRound > 1 && renderKeyboardRow(SYMBOLS)}
             </div>
 
-            {/* Actions */}
-            <div className="flex justify-center" style={{ marginTop: '3rem' }}>
-                <button
-                    onClick={useHint}
-                    disabled={hintsUsed >= 2 || gameState !== 'playing'}
-                    className={`rounded-lg font-heading tracking-widest text-sm border transition-all
-                        ${hintsUsed < 2
-                            ? 'border-yellow-500/50 text-yellow-500 hover:bg-yellow-500/10 hover:shadow-[0_0_15px_rgba(234,179,8,0.3)]'
-                            : 'border-white/10 text-white/20 cursor-not-allowed'}`}
-                    style={{ padding: '1.25rem 2.5rem', letterSpacing: '0.15em', fontSize: '1.1rem' }}
-                >
-                    Decrypt Hint ({2 - hintsUsed} left)
-                </button>
-            </div>
         </div>
     );
 
-    const ResultModal = ({ isWin }) => (
+    const ResultModal = ({ isWin, isPasswordCracked }) => (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`text-center max-w-lg mx-auto glass-card p-8 md:p-10 ${isWin ? 'border-neon-blue/50 neon-glow-blue' : 'border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.2)]'}`}
+            className={`text-center max-w-lg mx-auto glass-card p-8 md:p-10 ${isWin || isPasswordCracked ? 'border-neon-blue/50 neon-glow-blue' : 'border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.2)]'}`}
+            style={{ padding: '2rem', }}
         >
-            <div className="text-6xl mb-6">{isWin ? '🔓' : '☠️'}</div>
-            <h2 className={`font-heading text-3xl font-bold mb-4 uppercase tracking-wider ${isWin ? 'text-neon-blue' : 'text-red-500'}`}>
-                {isWin ? 'Access Granted' : 'System Lockout'}
+            <div className="text-6xl mb-10">{isWin || isPasswordCracked ? '🔓' : '☠️'}</div>
+            <h2 className={`font-heading text-3xl font-bold mb-8 uppercase tracking-widest ${isWin || isPasswordCracked ? 'text-neon-blue' : 'text-red-500'}`} style={{ letterSpacing: '0.15em' }}>
+                {isPasswordCracked ? 'Password Decrypted' : (isWin ? 'Access Granted' : 'System Lockout')}
             </h2>
-            <p className="text-white/70 mb-6">
-                {isWin
-                    ? `You successfully infiltrated Level ${currentRound}.`
-                    : `The firewall detected your intrusion. The target password was:`}
+            <p className="text-white/70 mb-10 mt-4 text-lg" style={{ lineHeight: '2' }}>
+                {isPasswordCracked
+                    ? `You bypassed a security node. ${GAME_DATA[currentRound - 1].passwords.length - currentPasswordIndex - 1} passwords remaining in this level.`
+                    : (isWin
+                        ? `You successfully infiltrated Level ${currentRound}.`
+                        : `The firewall detected your intrusion. The target password was:`)}
             </p>
 
-            {!isWin && (
+            {!isWin && !isPasswordCracked && (
                 <div className="font-mono text-2xl font-bold text-white bg-red-500/10 p-4 rounded-lg mb-8 border border-red-500/30">
-                    {targetPassword?.word}
+                    {targetPassword ? (targetPassword.w ? atob(targetPassword.w) : targetPassword.word) : ''}
                 </div>
             )}
 
             <div className="mt-8">
-                {isWin ? (
+                {isPasswordCracked ? (
+                    <button onClick={nextPassword} className="neon-btn w-full">
+                        Next Password
+                    </button>
+                ) : isWin ? (
                     <button onClick={nextRound} className="neon-btn w-full">
                         {currentRound < 3 ? 'Proceed to Next Level' : 'View Final Report'}
                     </button>
                 ) : (
                     <div className="flex gap-4">
-                        <button onClick={() => setGameState('start')} className="w-full py-4 rounded-lg font-heading tracking-widest text-sm border border-white/20 text-white hover:bg-white/5 transition-all">
+                        <button onClick={() => {
+                            setGameState('start');
+                        }} className="w-full py-4 rounded-lg font-heading tracking-widest text-sm border border-white/20 text-white hover:bg-white/5 transition-all">
                             Abort Mission
                         </button>
                         <button onClick={() => startRound(currentRound)} className="neon-btn w-full">
@@ -329,7 +465,7 @@ export default function HangTheHackerGame() {
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-3xl mx-auto w-full"
         >
-            <div className="glass-card p-8 md:p-12 border-neon-purple/50 neon-glow-purple relative overflow-hidden">
+            <div className="glass-card border-neon-purple/50 neon-glow-purple relative overflow-hidden" style={{ padding: '4rem 5rem' }}>
                 {/* Decorative element */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-neon-purple/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
@@ -392,9 +528,9 @@ export default function HangTheHackerGame() {
                                             method: 'POST',
                                             headers: { 'Content-Type': 'application/json' },
                                             body: JSON.stringify({
-                                                playerName,
-                                                timeTaken: timeElapsed,
-                                                hintsUsed,
+                                                playerName: playerName.replace(/[^a-zA-Z0-9_\- ]/g, '').trim(),
+                                                timeTaken: gt.current.totalTime,
+                                                hintsUsed: gt.current.hints,
                                                 accuracy: calculateAccuracy()
                                             })
                                         });
@@ -453,6 +589,7 @@ export default function HangTheHackerGame() {
             <AnimatePresence mode="wait">
                 {gameState === 'start' && <StartScreen key="start" />}
                 {gameState === 'playing' && <PlayingScreen key="playing" />}
+                {gameState === 'password_cracked' && <ResultModal key="cracked" isPasswordCracked={true} />}
                 {gameState === 'round_won' && <ResultModal key="won" isWin={true} />}
                 {gameState === 'round_lost' && <ResultModal key="lost" isWin={false} />}
                 {gameState === 'victory' && <VictoryScreen key="victory" />}

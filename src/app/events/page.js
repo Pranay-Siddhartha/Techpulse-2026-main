@@ -80,7 +80,14 @@ function EventModal({ event, onClose }) {
                         <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
                     </div>
 
-                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+                    <div className="flex items-center gap-3">
+                        {event.title === 'Hang the Hacker' && (
+                            <Link href="/play/hang-the-hacker" className="neon-btn !py-2 !px-6 !text-xs !bg-neon-purple/20 !border-neon-purple !text-neon-purple neon-glow-purple">
+                                Play Now
+                            </Link>
+                        )}
+                        <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+                    </div>
                 </div>
             </motion.div>
         </motion.div>

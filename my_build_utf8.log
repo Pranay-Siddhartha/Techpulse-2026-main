@@ -1,0 +1,93 @@
+﻿
+> techpulse-2026@1.0.0 build
+> next build
+
+node.exe :  ΓÜá 
+Warning: Next.js 
+inferred your 
+workspace root, but it 
+may not be correct.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ( ΓÜá Warning:   
+  N...not be correc    
+t.:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+ We detected multiple 
+lockfiles and selected 
+the directory of C:\Use
+rs\prana\package-lock.j
+son as the root 
+directory.
+ To silence this 
+warning, set `outputFil
+eTracingRoot` in your 
+Next.js config, or 
+consider removing one 
+of the lockfiles if 
+it's not needed.
+   See https://nextjs.o
+rg/docs/app/api-referen
+ce/config/next-config-j
+s/output#caveats for 
+more information.
+ Detected additional 
+lockfiles: 
+   * C:\Users\prana\Dow
+nloads\Techpulse-2026\p
+ackage-lock.json
+
+   Γû▓ Next.js 15.5.12
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 2.6s
+   Linting and checking validity of types ...
+ Γ¿» ESLint must be 
+installed in order to 
+run during builds: npm 
+install --save-dev 
+eslint
+   Collecting page data ...
+   Generating static pages (0/13) ...
+   Generating static pages (3/13) 
+   Generating static pages (6/13) 
+   Generating static pages (9/13) 
+ Γ£ô Generating static pages (13/13)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+Γöî Γùï /                                    20.5 kB         166 kB
+Γö£ Γùï /_not-found                            995 B         103 kB
+Γö£ ╞Æ /api/hang-the-hacker/leaderboard       130 B         102 kB
+Γö£ ╞Æ /api/leaderboard                       130 B         102 kB
+Γö£ ╞Æ /api/register                          130 B         102 kB
+Γö£ Γùï /events                               4.4 kB         150 kB
+Γö£ Γùï /leaderboard                           884 B         143 kB
+Γö£ Γùï /play/hang-the-hacker                6.55 kB         152 kB
+Γö£ Γùï /play/hang-the-hacker/leaderboard    1.77 kB         148 kB
+Γö£ Γùï /register                            1.11 kB         144 kB
+Γöö Γùï /schedule                             1.6 kB         144 kB
++ First Load JS shared by all             102 kB
+  Γö£ chunks/255-ebd51be49873d76c.js         46 kB
+  Γö£ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  Γöö other shared chunks (total)          1.99 kB
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

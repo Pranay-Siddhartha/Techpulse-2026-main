@@ -1,0 +1,1313 @@
+﻿commit d753f27c1c6a6dec4dd200bd69f76092b88d2949
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Sun Mar 1 21:10:08 2026 +0530
+
+    chore: update meta description and event links
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 9d9059a..1f24d20 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -79,6 +79,7 @@ function EventModal({ event, onClose }) {
+                         <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+                         <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                     </div>
++
+                     <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+                 </div>
+             </motion.div>
+
+commit 7670aace35907410dfe8c14c8e7dfc080efb6320
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Tue Feb 24 14:20:33 2026 +0530
+
+    Fix syntax error in events page
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 2a67783..9d9059a 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -54,7 +54,7 @@ function EventModal({ event, onClose }) {
+                     </button>
+                 </div>
+ 
+-                <p className="text-white/60 text-sm leading-relaxed mb-6" style={{ marginBottom: '1rem', marginTop: '1rem',marginLeft:"0.4rem" }}>{event.description}</p>
++                <p className="text-white/60 text-sm leading-relaxed mb-6" style={{ marginBottom: '1rem', marginTop: '1rem', marginLeft: "0.4rem" }}>{event.description}</p>
+ 
+                 <div className="grid grid-cols-2 gap-4 mb-6 ml-2">
+                     {[
+@@ -66,7 +66,7 @@ function EventModal({ event, onClose }) {
+                         <div
+                             key={i}
+                             className="bg-dark-bg/60 rounded-lg border border-neon-purple/10 hover:border-neon-purple/30 transition shadow-inner"
+-                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem',paddingTop:'0.5rem',paddingBottom:'0.5rem'}e}
++                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem', paddingTop: '0.5rem', paddingBottom: '0.5rem' }}
+                         >
+                             <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+                             <p className="text-sm text-white/80 font-medium">{item.value}</p>
+
+commit ceabfa9f178fc5aa094f2763b8f58d7f1d9f7ea0
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Tue Feb 24 14:15:23 2026 +0530
+
+    Update registration link and event details
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index b98ce8e..2a67783 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -66,7 +66,7 @@ function EventModal({ event, onClose }) {
+                         <div
+                             key={i}
+                             className="bg-dark-bg/60 rounded-lg border border-neon-purple/10 hover:border-neon-purple/30 transition shadow-inner"
+-                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem',paddingTop:'0.5rem',paddingBottom:'0.5rem'}}
++                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem',paddingTop:'0.5rem',paddingBottom:'0.5rem'}e}
+                         >
+                             <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+                             <p className="text-sm text-white/80 font-medium">{item.value}</p>
+
+commit 86d60df8856c3f6f4a12c5cc162becaf31f82fcc
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 23:05:16 2026 +0530
+
+    style: final layout adjustments for breathing room in event modal
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 243e8e7..b98ce8e 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -54,7 +54,7 @@ function EventModal({ event, onClose }) {
+                     </button>
+                 </div>
+ 
+-                <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
++                <p className="text-white/60 text-sm leading-relaxed mb-6" style={{ marginBottom: '1rem', marginTop: '1rem',marginLeft:"0.4rem" }}>{event.description}</p>
+ 
+                 <div className="grid grid-cols-2 gap-4 mb-6 ml-2">
+                     {[
+@@ -66,7 +66,7 @@ function EventModal({ event, onClose }) {
+                         <div
+                             key={i}
+                             className="bg-dark-bg/60 rounded-lg border border-neon-purple/10 hover:border-neon-purple/30 transition shadow-inner"
+-                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem'}}
++                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem',paddingTop:'0.5rem',paddingBottom:'0.5rem'}}
+                         >
+                             <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+                             <p className="text-sm text-white/80 font-medium">{item.value}</p>
+
+commit 07144094d44a92b7418eb8ec474a584f807c0c6e
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:59:56 2026 +0530
+
+    style: use inline padding for modal detail boxes for precision
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 33ea82b..243e8e7 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -65,9 +65,8 @@ function EventModal({ event, onClose }) {
+                     ].map((item, i) => (
+                         <div
+                             key={i}
+-                            className="bg-dark-bg/60 rounded-lg px-10 py-5 
+-                                        border border-neon-purple/10 
+-                                        hover:border-neon-purple/30 transition shadow-inner"
++                            className="bg-dark-bg/60 rounded-lg border border-neon-purple/10 hover:border-neon-purple/30 transition shadow-inner"
++                            style={{ paddingLeft: '0.5rem', paddingRight: '2rem'}}
+                         >
+                             <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+                             <p className="text-sm text-white/80 font-medium">{item.value}</p>
+
+commit 812df99bdcd5edc4344caadfffd049c4731c3597
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:58:09 2026 +0530
+
+    style: increase horizontal padding for modal detail boxes
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 39e3e09..33ea82b 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -35,47 +35,52 @@ function EventModal({ event, onClose }) {
+                 exit={{ scale: 0.85, opacity: 0 }}
+                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                 onClick={(e) => e.stopPropagation()}
+-                className="glass-card !border-neon-purple/40 max-w-xl w-full max-h-[85vh] overflow-y-auto neon-glow-purple"
+-                style={{ padding: '2.5rem' }}
++                className="glass-card !border-neon-purple/40 max-w-lg w-full max-h-[80vh] overflow-y-auto neon-glow-purple"
++                style={{ padding: '2rem' }}
+             >
+-                <div className="flex items-start justify-between mb-8">
+-                    <div className="flex items-center gap-4">
+-                        <span className="text-5xl">{event.emoji}</span>
++                <div className="flex items-start justify-between mb-6">
++                    <div className="flex items-center gap-3">
++                        <span className="text-4xl">{event.emoji}</span>
+                         <div>
+-                            <h2 className="font-heading text-2xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+-                            <span className="text-sm font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
++                            <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                            <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+                         </div>
+                     </div>
+                     <button
+                         onClick={onClose}
+-                        className="text-white/40 hover:text-neon-purple transition-colors text-3xl leading-none"
++                        className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
+                     >
+                         Γ£ò
+                     </button>
+                 </div>
+ 
+-                <p className="text-white/60 text-base leading-relaxed mb-8">{event.description}</p>
++                <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
+ 
+-                <div className="grid grid-cols-2 gap-5 mb-8">
++                <div className="grid grid-cols-2 gap-4 mb-6 ml-2">
+                     {[
+                         { label: 'Date', value: event.date },
+                         { label: 'Time', value: event.time },
+                         { label: 'Venue', value: event.venue },
+                         { label: 'Team', value: event.team },
+                     ].map((item, i) => (
+-                        <div key={i} className="bg-dark-bg/60 rounded-lg p-4 border border-neon-purple/10">
+-                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-2">{item.label}</p>
+-                            <p className="text-base text-white/80 font-medium">{item.value}</p>
++                        <div
++                            key={i}
++                            className="bg-dark-bg/60 rounded-lg px-10 py-5 
++                                        border border-neon-purple/10 
++                                        hover:border-neon-purple/30 transition shadow-inner"
++                        >
++                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
++                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
+                         </div>
+                     ))}
+                 </div>
+ 
+-                <div className="flex items-center justify-between" style={{ marginTop: '2rem' }}>
++                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
+                     <div className="flex items-center gap-2">
+                         <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+-                        <span className="font-heading text-xl font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                     </div>
+-                    <Link href="/register" className="neon-btn !py-2.5 !px-8 !text-sm">Register</Link>
++                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+                 </div>
+             </motion.div>
+         </motion.div>
+
+commit 8299bda2a5f5dcad07f7546ce144954037e045c0
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:45:12 2026 +0530
+
+    style: improve event modal spacing and layout
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 730cbd8..39e3e09 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -35,47 +35,47 @@ function EventModal({ event, onClose }) {
+                 exit={{ scale: 0.85, opacity: 0 }}
+                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                 onClick={(e) => e.stopPropagation()}
+-                className="glass-card !border-neon-purple/40 max-w-lg w-full max-h-[80vh] overflow-y-auto neon-glow-purple"
+-                style={{ padding: '2rem' }}
++                className="glass-card !border-neon-purple/40 max-w-xl w-full max-h-[85vh] overflow-y-auto neon-glow-purple"
++                style={{ padding: '2.5rem' }}
+             >
+-                <div className="flex items-start justify-between mb-6">
+-                    <div className="flex items-center gap-3">
+-                        <span className="text-4xl">{event.emoji}</span>
++                <div className="flex items-start justify-between mb-8">
++                    <div className="flex items-center gap-4">
++                        <span className="text-5xl">{event.emoji}</span>
+                         <div>
+-                            <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+-                            <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
++                            <h2 className="font-heading text-2xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                            <span className="text-sm font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+                         </div>
+                     </div>
+                     <button
+                         onClick={onClose}
+-                        className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
++                        className="text-white/40 hover:text-neon-purple transition-colors text-3xl leading-none"
+                     >
+                         Γ£ò
+                     </button>
+                 </div>
+ 
+-                <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
++                <p className="text-white/60 text-base leading-relaxed mb-8">{event.description}</p>
+ 
+-                <div className="grid grid-cols-2 gap-4 mb-6">
++                <div className="grid grid-cols-2 gap-5 mb-8">
+                     {[
+                         { label: 'Date', value: event.date },
+                         { label: 'Time', value: event.time },
+                         { label: 'Venue', value: event.venue },
+                         { label: 'Team', value: event.team },
+                     ].map((item, i) => (
+-                        <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
+-                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+-                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
++                        <div key={i} className="bg-dark-bg/60 rounded-lg p-4 border border-neon-purple/10">
++                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-2">{item.label}</p>
++                            <p className="text-base text-white/80 font-medium">{item.value}</p>
+                         </div>
+                     ))}
+                 </div>
+ 
+-                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
++                <div className="flex items-center justify-between" style={{ marginTop: '2rem' }}>
+                     <div className="flex items-center gap-2">
+                         <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+-                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                        <span className="font-heading text-xl font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                     </div>
+-                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                    <Link href="/register" className="neon-btn !py-2.5 !px-8 !text-sm">Register</Link>
+                 </div>
+             </motion.div>
+         </motion.div>
+
+commit 4140bdd75f56fddf3b97c47eb433b6d0fa64f91c
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:42:51 2026 +0530
+
+    revert: restore normal modal without electric border
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index ef1a766..730cbd8 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -3,7 +3,6 @@
+ import { useState } from 'react';
+ import Link from 'next/link';
+ import { motion, AnimatePresence } from 'framer-motion';
+-import ElectricBorder from '@/components/ElectricBorder';
+ 
+ const pageTransition = {
+     initial: { opacity: 0, y: 30 },
+@@ -36,58 +35,48 @@ function EventModal({ event, onClose }) {
+                 exit={{ scale: 0.85, opacity: 0 }}
+                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                 onClick={(e) => e.stopPropagation()}
+-                className="max-w-lg w-full max-h-[80vh] flex"
++                className="glass-card !border-neon-purple/40 max-w-lg w-full max-h-[80vh] overflow-y-auto neon-glow-purple"
++                style={{ padding: '2rem' }}
+             >
+-                <ElectricBorder
+-                    color="#a855f7"
+-                    speed={1}
+-                    chaos={0.1}
+-                    borderRadius={16}
+-                    displacement={10}
+-                    borderOffset={20}
+-                    className="glass-card !border-none w-full h-full overflow-y-auto"
+-                    style={{ padding: '2rem' }}
+-                >
+-                    <div className="flex items-start justify-between mb-6">
+-                        <div className="flex items-center gap-3">
+-                            <span className="text-4xl">{event.emoji}</span>
+-                            <div>
+-                                <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+-                                <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+-                            </div>
++                <div className="flex items-start justify-between mb-6">
++                    <div className="flex items-center gap-3">
++                        <span className="text-4xl">{event.emoji}</span>
++                        <div>
++                            <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                            <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+                         </div>
+-                        <button
+-                            onClick={onClose}
+-                            className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
+-                        >
+-                            Γ£ò
+-                        </button>
+-                    </div>
+-
+-                    <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
+-
+-                    <div className="grid grid-cols-2 gap-4 mb-6">
+-                        {[
+-                            { label: 'Date', value: event.date },
+-                            { label: 'Time', value: event.time },
+-                            { label: 'Venue', value: event.venue },
+-                            { label: 'Team', value: event.team },
+-                        ].map((item, i) => (
+-                            <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
+-                                <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+-                                <p className="text-sm text-white/80 font-medium">{item.value}</p>
+-                            </div>
+-                        ))}
+                     </div>
++                    <button
++                        onClick={onClose}
++                        className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
++                    >
++                        Γ£ò
++                    </button>
++                </div>
+ 
+-                    <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
+-                        <div className="flex items-center gap-2">
+-                            <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+-                            <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
++
++                <div className="grid grid-cols-2 gap-4 mb-6">
++                    {[
++                        { label: 'Date', value: event.date },
++                        { label: 'Time', value: event.time },
++                        { label: 'Venue', value: event.venue },
++                        { label: 'Team', value: event.team },
++                    ].map((item, i) => (
++                        <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
++                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
++                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
+                         </div>
+-                        <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                    ))}
++                </div>
++
++                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
++                    <div className="flex items-center gap-2">
++                        <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
++                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                     </div>
+-                </ElectricBorder>
++                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                </div>
+             </motion.div>
+         </motion.div>
+     );
+
+commit 06e5cd53c1ae571d14dc792a5f0fb5884587b19f
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:36:20 2026 +0530
+
+    Revert "style: increase layout padding and remove ElectricBorder integration"
+    
+    This reverts commit a0465c9f7b94c7c24734311aa0456333482e5e0c.
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 01e0959..ef1a766 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -3,6 +3,7 @@
+ import { useState } from 'react';
+ import Link from 'next/link';
+ import { motion, AnimatePresence } from 'framer-motion';
++import ElectricBorder from '@/components/ElectricBorder';
+ 
+ const pageTransition = {
+     initial: { opacity: 0, y: 30 },
+@@ -35,48 +36,58 @@ function EventModal({ event, onClose }) {
+                 exit={{ scale: 0.85, opacity: 0 }}
+                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                 onClick={(e) => e.stopPropagation()}
+-                className="glass-card !border-neon-purple/40 max-w-xl w-full max-h-[85vh] overflow-y-auto neon-glow-purple"
+-                style={{ padding: '3rem' }}
++                className="max-w-lg w-full max-h-[80vh] flex"
+             >
+-                <div className="flex items-start justify-between mb-8">
+-                    <div className="flex items-center gap-4">
+-                        <span className="text-5xl">{event.emoji}</span>
+-                        <div>
+-                            <h2 className="font-heading text-2xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+-                            <span className="text-sm font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
++                <ElectricBorder
++                    color="#a855f7"
++                    speed={1}
++                    chaos={0.1}
++                    borderRadius={16}
++                    displacement={10}
++                    borderOffset={20}
++                    className="glass-card !border-none w-full h-full overflow-y-auto"
++                    style={{ padding: '2rem' }}
++                >
++                    <div className="flex items-start justify-between mb-6">
++                        <div className="flex items-center gap-3">
++                            <span className="text-4xl">{event.emoji}</span>
++                            <div>
++                                <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                                <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
++                            </div>
+                         </div>
++                        <button
++                            onClick={onClose}
++                            className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
++                        >
++                            Γ£ò
++                        </button>
+                     </div>
+-                    <button
+-                        onClick={onClose}
+-                        className="text-white/40 hover:text-neon-purple transition-colors text-3xl leading-none"
+-                    >
+-                        Γ£ò
+-                    </button>
+-                </div>
+ 
+-                <p className="text-white/60 text-base leading-relaxed mb-10">{event.description}</p>
+-
+-                <div className="grid grid-cols-2 gap-6 mb-10">
+-                    {[
+-                        { label: 'Date', value: event.date },
+-                        { label: 'Time', value: event.time },
+-                        { label: 'Venue', value: event.venue },
+-                        { label: 'Team', value: event.team },
+-                    ].map((item, i) => (
+-                        <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
+-                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+-                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
+-                        </div>
+-                    ))}
+-                </div>
++                    <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
++
++                    <div className="grid grid-cols-2 gap-4 mb-6">
++                        {[
++                            { label: 'Date', value: event.date },
++                            { label: 'Time', value: event.time },
++                            { label: 'Venue', value: event.venue },
++                            { label: 'Team', value: event.team },
++                        ].map((item, i) => (
++                            <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
++                                <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
++                                <p className="text-sm text-white/80 font-medium">{item.value}</p>
++                            </div>
++                        ))}
++                    </div>
+ 
+-                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
+-                    <div className="flex items-center gap-2">
+-                        <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+-                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                    <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
++                        <div className="flex items-center gap-2">
++                            <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
++                            <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                        </div>
++                        <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+                     </div>
+-                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+-                </div>
++                </ElectricBorder>
+             </motion.div>
+         </motion.div>
+     );
+@@ -89,18 +100,18 @@ export default function Events() {
+     const filtered = activeCategory === 'All' ? events : events.filter(e => e.category === activeCategory);
+ 
+     return (
+-        <motion.div {...pageTransition} className="min-h-screen" style={{ paddingTop: '10rem', paddingBottom: '8rem', paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>
+-            <div className="max-w-7xl mx-auto">
++        <motion.div {...pageTransition} className="min-h-screen" style={{ paddingTop: '6rem', paddingBottom: '4rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
++            <div className="max-w-7xl" style={{ margin: '0 auto' }}>
+                 {/* Header */}
+-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+-                    <h1 className="font-heading text-5xl md:text-6xl font-bold" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
+-                        <span className="bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent">Challenge Yourself</span>
++                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
++                    <h1 className="font-heading text-4xl md:text-5xl font-bold" style={{ marginBottom: '1rem', textAlign: 'center' }}>
++                        <span className="bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent">Events</span>
+                     </h1>
+-                    <p className="text-white/40 text-lg" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto' }}>Pick your battlefield and prove your skills in the ultimate cybersecurity arena.</p>
++                    <p className="text-white/40" style={{ marginBottom: '1rem', textAlign: 'center', maxWidth: '32rem', margin: '0 auto 1rem auto' }}>Pick your battlefield and prove your skills.</p>
+                 </div>
+ 
+                 {/* Category Filter */}
+-                <div className="flex flex-wrap gap-4" style={{ marginBottom: '5rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
++                <div className="flex flex-wrap gap-3" style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                     {categories.map(cat => (
+                         <button
+                             key={cat}
+@@ -117,7 +128,7 @@ export default function Events() {
+                 </div>
+ 
+                 {/* Event Grid */}
+-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '2rem', marginBottom: '4rem', justifyItems: 'center' }}>
++                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '1rem', marginBottom: '2rem', justifyItems: 'center' }}>
+                     <AnimatePresence mode="popLayout">
+                         {filtered.map((event) => (
+                             <motion.div
+@@ -126,10 +137,10 @@ export default function Events() {
+                                 initial={{ opacity: 0, scale: 0.9 }}
+                                 animate={{ opacity: 1, scale: 1 }}
+                                 exit={{ opacity: 0, scale: 0.9 }}
+-                                transition={{ duration: 0.4 }}
++                                transition={{ duration: 0.3 }}
+                                 onClick={() => setSelectedEvent(event)}
+                                 className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300 w-full h-full"
+-                                style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
++                                style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
+                             >
+                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                                     <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
+
+commit a0465c9f7b94c7c24734311aa0456333482e5e0c
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:35:13 2026 +0530
+
+    style: increase layout padding and remove ElectricBorder integration
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index ef1a766..01e0959 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -3,7 +3,6 @@
+ import { useState } from 'react';
+ import Link from 'next/link';
+ import { motion, AnimatePresence } from 'framer-motion';
+-import ElectricBorder from '@/components/ElectricBorder';
+ 
+ const pageTransition = {
+     initial: { opacity: 0, y: 30 },
+@@ -36,58 +35,48 @@ function EventModal({ event, onClose }) {
+                 exit={{ scale: 0.85, opacity: 0 }}
+                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                 onClick={(e) => e.stopPropagation()}
+-                className="max-w-lg w-full max-h-[80vh] flex"
++                className="glass-card !border-neon-purple/40 max-w-xl w-full max-h-[85vh] overflow-y-auto neon-glow-purple"
++                style={{ padding: '3rem' }}
+             >
+-                <ElectricBorder
+-                    color="#a855f7"
+-                    speed={1}
+-                    chaos={0.1}
+-                    borderRadius={16}
+-                    displacement={10}
+-                    borderOffset={20}
+-                    className="glass-card !border-none w-full h-full overflow-y-auto"
+-                    style={{ padding: '2rem' }}
+-                >
+-                    <div className="flex items-start justify-between mb-6">
+-                        <div className="flex items-center gap-3">
+-                            <span className="text-4xl">{event.emoji}</span>
+-                            <div>
+-                                <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+-                                <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+-                            </div>
++                <div className="flex items-start justify-between mb-8">
++                    <div className="flex items-center gap-4">
++                        <span className="text-5xl">{event.emoji}</span>
++                        <div>
++                            <h2 className="font-heading text-2xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                            <span className="text-sm font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+                         </div>
+-                        <button
+-                            onClick={onClose}
+-                            className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
+-                        >
+-                            Γ£ò
+-                        </button>
+-                    </div>
+-
+-                    <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
+-
+-                    <div className="grid grid-cols-2 gap-4 mb-6">
+-                        {[
+-                            { label: 'Date', value: event.date },
+-                            { label: 'Time', value: event.time },
+-                            { label: 'Venue', value: event.venue },
+-                            { label: 'Team', value: event.team },
+-                        ].map((item, i) => (
+-                            <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
+-                                <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+-                                <p className="text-sm text-white/80 font-medium">{item.value}</p>
+-                            </div>
+-                        ))}
+                     </div>
++                    <button
++                        onClick={onClose}
++                        className="text-white/40 hover:text-neon-purple transition-colors text-3xl leading-none"
++                    >
++                        Γ£ò
++                    </button>
++                </div>
+ 
+-                    <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
+-                        <div className="flex items-center gap-2">
+-                            <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+-                            <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                <p className="text-white/60 text-base leading-relaxed mb-10">{event.description}</p>
++
++                <div className="grid grid-cols-2 gap-6 mb-10">
++                    {[
++                        { label: 'Date', value: event.date },
++                        { label: 'Time', value: event.time },
++                        { label: 'Venue', value: event.venue },
++                        { label: 'Team', value: event.team },
++                    ].map((item, i) => (
++                        <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
++                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
++                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
+                         </div>
+-                        <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                    ))}
++                </div>
++
++                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
++                    <div className="flex items-center gap-2">
++                        <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
++                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                     </div>
+-                </ElectricBorder>
++                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                </div>
+             </motion.div>
+         </motion.div>
+     );
+@@ -100,18 +89,18 @@ export default function Events() {
+     const filtered = activeCategory === 'All' ? events : events.filter(e => e.category === activeCategory);
+ 
+     return (
+-        <motion.div {...pageTransition} className="min-h-screen" style={{ paddingTop: '6rem', paddingBottom: '4rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
+-            <div className="max-w-7xl" style={{ margin: '0 auto' }}>
++        <motion.div {...pageTransition} className="min-h-screen" style={{ paddingTop: '10rem', paddingBottom: '8rem', paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>
++            <div className="max-w-7xl mx-auto">
+                 {/* Header */}
+-                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+-                    <h1 className="font-heading text-4xl md:text-5xl font-bold" style={{ marginBottom: '1rem', textAlign: 'center' }}>
+-                        <span className="bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent">Events</span>
++                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
++                    <h1 className="font-heading text-5xl md:text-6xl font-bold" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
++                        <span className="bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent">Challenge Yourself</span>
+                     </h1>
+-                    <p className="text-white/40" style={{ marginBottom: '1rem', textAlign: 'center', maxWidth: '32rem', margin: '0 auto 1rem auto' }}>Pick your battlefield and prove your skills.</p>
++                    <p className="text-white/40 text-lg" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto' }}>Pick your battlefield and prove your skills in the ultimate cybersecurity arena.</p>
+                 </div>
+ 
+                 {/* Category Filter */}
+-                <div className="flex flex-wrap gap-3" style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
++                <div className="flex flex-wrap gap-4" style={{ marginBottom: '5rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                     {categories.map(cat => (
+                         <button
+                             key={cat}
+@@ -128,7 +117,7 @@ export default function Events() {
+                 </div>
+ 
+                 {/* Event Grid */}
+-                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '1rem', marginBottom: '2rem', justifyItems: 'center' }}>
++                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '2rem', marginBottom: '4rem', justifyItems: 'center' }}>
+                     <AnimatePresence mode="popLayout">
+                         {filtered.map((event) => (
+                             <motion.div
+@@ -137,10 +126,10 @@ export default function Events() {
+                                 initial={{ opacity: 0, scale: 0.9 }}
+                                 animate={{ opacity: 1, scale: 1 }}
+                                 exit={{ opacity: 0, scale: 0.9 }}
+-                                transition={{ duration: 0.3 }}
++                                transition={{ duration: 0.4 }}
+                                 onClick={() => setSelectedEvent(event)}
+                                 className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300 w-full h-full"
+-                                style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
++                                style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
+                             >
+                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                                     <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
+
+commit dd7df65861e4077ebe982d0d20e589605ececf97
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:24:53 2026 +0530
+
+    style: fix ElectricBorder alignment by making it the modal container
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index fc1bb85..ef1a766 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -36,57 +36,56 @@ function EventModal({ event, onClose }) {
+                 exit={{ scale: 0.85, opacity: 0 }}
+                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                 onClick={(e) => e.stopPropagation()}
+-                className="max-w-lg w-full max-h-[80vh]"
++                className="max-w-lg w-full max-h-[80vh] flex"
+             >
+                 <ElectricBorder
+                     color="#a855f7"
+                     speed={1}
+                     chaos={0.1}
+                     borderRadius={16}
+-                    displacement={8}
+-                    borderOffset={12}
+-                    className="w-full h-full"
++                    displacement={10}
++                    borderOffset={20}
++                    className="glass-card !border-none w-full h-full overflow-y-auto"
++                    style={{ padding: '2rem' }}
+                 >
+-                    <div className="glass-card !border-none w-full h-full overflow-y-auto" style={{ padding: '2rem' }}>
+-                        <div className="flex items-start justify-between mb-6">
+-                            <div className="flex items-center gap-3">
+-                                <span className="text-4xl">{event.emoji}</span>
+-                                <div>
+-                                    <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+-                                    <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+-                                </div>
++                    <div className="flex items-start justify-between mb-6">
++                        <div className="flex items-center gap-3">
++                            <span className="text-4xl">{event.emoji}</span>
++                            <div>
++                                <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                                <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
+                             </div>
+-                            <button
+-                                onClick={onClose}
+-                                className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
+-                            >
+-                                Γ£ò
+-                            </button>
+-                        </div>
+-
+-                        <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
+-
+-                        <div className="grid grid-cols-2 gap-4 mb-6">
+-                            {[
+-                                { label: 'Date', value: event.date },
+-                                { label: 'Time', value: event.time },
+-                                { label: 'Venue', value: event.venue },
+-                                { label: 'Team', value: event.team },
+-                            ].map((item, i) => (
+-                                <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
+-                                    <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+-                                    <p className="text-sm text-white/80 font-medium">{item.value}</p>
+-                                </div>
+-                            ))}
+                         </div>
++                        <button
++                            onClick={onClose}
++                            className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
++                        >
++                            Γ£ò
++                        </button>
++                    </div>
+ 
+-                        <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
+-                            <div className="flex items-center gap-2">
+-                                <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+-                                <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                    <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
++
++                    <div className="grid grid-cols-2 gap-4 mb-6">
++                        {[
++                            { label: 'Date', value: event.date },
++                            { label: 'Time', value: event.time },
++                            { label: 'Venue', value: event.venue },
++                            { label: 'Team', value: event.team },
++                        ].map((item, i) => (
++                            <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
++                                <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
++                                <p className="text-sm text-white/80 font-medium">{item.value}</p>
+                             </div>
+-                            <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                        ))}
++                    </div>
++
++                    <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
++                        <div className="flex items-center gap-2">
++                            <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
++                            <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
+                         </div>
++                        <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+                     </div>
+                 </ElectricBorder>
+             </motion.div>
+
+commit 08b2dd33a7ff4e5bc66f362c9da5df659d90d83d
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:22:36 2026 +0530
+
+    style: fix ElectricBorder alignment and remove conflicting modal borders
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 8d14d30..fc1bb85 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -40,14 +40,14 @@ function EventModal({ event, onClose }) {
+             >
+                 <ElectricBorder
+                     color="#a855f7"
+-                    speed={0.8}
+-                    chaos={0.07}
++                    speed={1}
++                    chaos={0.1}
+                     borderRadius={16}
+-                    displacement={6}
+-                    borderOffset={10}
+-                    className="w-full"
++                    displacement={8}
++                    borderOffset={12}
++                    className="w-full h-full"
+                 >
+-                    <div className="glass-card !border-neon-purple/40 w-full overflow-y-auto" style={{ padding: '2rem' }}>
++                    <div className="glass-card !border-none w-full h-full overflow-y-auto" style={{ padding: '2rem' }}>
+                         <div className="flex items-start justify-between mb-6">
+                             <div className="flex items-center gap-3">
+                                 <span className="text-4xl">{event.emoji}</span>
+
+commit 60ce7cb3109b5881c170251a24d4a18ce371cdcd
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:19:19 2026 +0530
+
+    style: refine ElectricBorder selection and alignment
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 83f598e..8d14d30 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -43,6 +43,8 @@ function EventModal({ event, onClose }) {
+                     speed={0.8}
+                     chaos={0.07}
+                     borderRadius={16}
++                    displacement={6}
++                    borderOffset={10}
+                     className="w-full"
+                 >
+                     <div className="glass-card !border-neon-purple/40 w-full overflow-y-auto" style={{ padding: '2rem' }}>
+@@ -138,38 +140,29 @@ export default function Events() {
+                                 exit={{ opacity: 0, scale: 0.9 }}
+                                 transition={{ duration: 0.3 }}
+                                 onClick={() => setSelectedEvent(event)}
+-                                className="w-full h-full"
++                                className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300 w-full h-full"
++                                style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
+                             >
+-                                <ElectricBorder
+-                                    color="#a855f7"
+-                                    speed={0.6}
+-                                    chaos={0.05}
+-                                    borderRadius={12}
+-                                    className="w-full h-full"
+-                                >
+-                                    <div className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300 w-full h-full" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}>
+-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+-                                            <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
+-                                            <div>
+-                                                <h3 className="font-heading font-bold text-white group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.875rem', margin: 0 }}>{event.title}</h3>
+-                                                <span className="font-heading" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(168, 85, 247, 0.6)' }}>{event.category}</span>
+-                                            </div>
+-                                        </div>
+-
+-                                        <div style={{ marginBottom: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+-                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôà {event.date} ΓÇó {event.time}</p>
+-                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôì {event.venue}</p>
+-                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒæÑ {event.team}</p>
+-                                        </div>
+-
+-                                        <div style={{ display: 'flex', alignItems: 'center', justify_content: 'space-between', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+-                                            <span className="font-heading font-bold text-neon-purple" style={{ fontSize: '0.875rem' }}>{event.prize}</span>
+-                                            <span className="font-heading group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'rgba(0, 240, 255, 0.5)' }}>
+-                                                View Details ΓåÆ
+-                                            </span>
+-                                        </div>
++                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
++                                    <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
++                                    <div>
++                                        <h3 className="font-heading font-bold text-white group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.875rem', margin: 0 }}>{event.title}</h3>
++                                        <span className="font-heading" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(168, 85, 247, 0.6)' }}>{event.category}</span>
+                                     </div>
+-                                </ElectricBorder>
++                                </div>
++
++                                <div style={{ marginBottom: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
++                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôà {event.date} ΓÇó {event.time}</p>
++                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôì {event.venue}</p>
++                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒæÑ {event.team}</p>
++                                </div>
++
++                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
++                                    <span className="font-heading font-bold text-neon-purple" style={{ fontSize: '0.875rem' }}>{event.prize}</span>
++                                    <span className="font-heading group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'rgba(0, 240, 255, 0.5)' }}>
++                                        View Details ΓåÆ
++                                    </span>
++                                </div>
+                             </motion.div>
+                         ))}
+                     </AnimatePresence>
+
+commit f234a7de6bb412c625ee921755967e087137349b
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Mon Feb 23 22:16:11 2026 +0530
+
+    feat: apply ElectricBorder to event cards and modal
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 1332c6d..83f598e 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -3,6 +3,7 @@
+ import { useState } from 'react';
+ import Link from 'next/link';
+ import { motion, AnimatePresence } from 'framer-motion';
++import ElectricBorder from '@/components/ElectricBorder';
+ 
+ const pageTransition = {
+     initial: { opacity: 0, y: 30 },
+@@ -35,48 +36,57 @@ function EventModal({ event, onClose }) {
+                 exit={{ scale: 0.85, opacity: 0 }}
+                 transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                 onClick={(e) => e.stopPropagation()}
+-                className="glass-card !border-neon-purple/40 max-w-lg w-full max-h-[80vh] overflow-y-auto neon-glow-purple"
+-                style={{ padding: '2rem' }}
++                className="max-w-lg w-full max-h-[80vh]"
+             >
+-                <div className="flex items-start justify-between mb-6">
+-                    <div className="flex items-center gap-3">
+-                        <span className="text-4xl">{event.emoji}</span>
+-                        <div>
+-                            <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
+-                            <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
++                <ElectricBorder
++                    color="#a855f7"
++                    speed={0.8}
++                    chaos={0.07}
++                    borderRadius={16}
++                    className="w-full"
++                >
++                    <div className="glass-card !border-neon-purple/40 w-full overflow-y-auto" style={{ padding: '2rem' }}>
++                        <div className="flex items-start justify-between mb-6">
++                            <div className="flex items-center gap-3">
++                                <span className="text-4xl">{event.emoji}</span>
++                                <div>
++                                    <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                                    <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
++                                </div>
++                            </div>
++                            <button
++                                onClick={onClose}
++                                className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
++                            >
++                                Γ£ò
++                            </button>
+                         </div>
+-                    </div>
+-                    <button
+-                        onClick={onClose}
+-                        className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
+-                    >
+-                        Γ£ò
+-                    </button>
+-                </div>
+ 
+-                <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
+-
+-                <div className="grid grid-cols-2 gap-4 mb-6">
+-                    {[
+-                        { label: 'Date', value: event.date },
+-                        { label: 'Time', value: event.time },
+-                        { label: 'Venue', value: event.venue },
+-                        { label: 'Team', value: event.team },
+-                    ].map((item, i) => (
+-                        <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
+-                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
+-                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
++                        <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
++
++                        <div className="grid grid-cols-2 gap-4 mb-6">
++                            {[
++                                { label: 'Date', value: event.date },
++                                { label: 'Time', value: event.time },
++                                { label: 'Venue', value: event.venue },
++                                { label: 'Team', value: event.team },
++                            ].map((item, i) => (
++                                <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
++                                    <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
++                                    <p className="text-sm text-white/80 font-medium">{item.value}</p>
++                                </div>
++                            ))}
+                         </div>
+-                    ))}
+-                </div>
+ 
+-                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
+-                    <div className="flex items-center gap-2">
+-                        <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
+-                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                        <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
++                            <div className="flex items-center gap-2">
++                                <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
++                                <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                            </div>
++                            <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                        </div>
+                     </div>
+-                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
+-                </div>
++                </ElectricBorder>
+             </motion.div>
+         </motion.div>
+     );
+@@ -128,29 +138,38 @@ export default function Events() {
+                                 exit={{ opacity: 0, scale: 0.9 }}
+                                 transition={{ duration: 0.3 }}
+                                 onClick={() => setSelectedEvent(event)}
+-                                className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300"
+-                                style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', height: '100%', width: '100%', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
++                                className="w-full h-full"
+                             >
+-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+-                                    <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
+-                                    <div>
+-                                        <h3 className="font-heading font-bold text-white group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.875rem', margin: 0 }}>{event.title}</h3>
+-                                        <span className="font-heading" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(168, 85, 247, 0.6)' }}>{event.category}</span>
++                                <ElectricBorder
++                                    color="#a855f7"
++                                    speed={0.6}
++                                    chaos={0.05}
++                                    borderRadius={12}
++                                    className="w-full h-full"
++                                >
++                                    <div className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300 w-full h-full" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}>
++                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
++                                            <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
++                                            <div>
++                                                <h3 className="font-heading font-bold text-white group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.875rem', margin: 0 }}>{event.title}</h3>
++                                                <span className="font-heading" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(168, 85, 247, 0.6)' }}>{event.category}</span>
++                                            </div>
++                                        </div>
++
++                                        <div style={{ marginBottom: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
++                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôà {event.date} ΓÇó {event.time}</p>
++                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôì {event.venue}</p>
++                                            <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒæÑ {event.team}</p>
++                                        </div>
++
++                                        <div style={{ display: 'flex', alignItems: 'center', justify_content: 'space-between', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
++                                            <span className="font-heading font-bold text-neon-purple" style={{ fontSize: '0.875rem' }}>{event.prize}</span>
++                                            <span className="font-heading group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'rgba(0, 240, 255, 0.5)' }}>
++                                                View Details ΓåÆ
++                                            </span>
++                                        </div>
+                                     </div>
+-                                </div>
+-
+-                                <div style={{ marginBottom: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+-                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôà {event.date} ΓÇó {event.time}</p>
+-                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôì {event.venue}</p>
+-                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒæÑ {event.team}</p>
+-                                </div>
+-
+-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+-                                    <span className="font-heading font-bold text-neon-purple" style={{ fontSize: '0.875rem' }}>{event.prize}</span>
+-                                    <span className="font-heading group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'rgba(0, 240, 255, 0.5)' }}>
+-                                        View Details ΓåÆ
+-                                    </span>
+-                                </div>
++                                </ElectricBorder>
+                             </motion.div>
+                         ))}
+                     </AnimatePresence>
+
+commit f57b3444021710e4ad1fbf1c668f6e50c6347290
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Sun Feb 22 22:49:46 2026 +0530
+
+    feat: update event titles and descriptions
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+index 1444e76..1332c6d 100644
+--- a/src/app/events/page.js
++++ b/src/app/events/page.js
+@@ -13,11 +13,11 @@ const pageTransition = {
+ const categories = ['All', 'Technical', 'Non-Technical', 'Gaming', 'Workshops'];
+ 
+ const events = [
+-    { id: 1, title: 'Strong Password Builder', category: 'Technical', emoji: '≡ƒöÆ', date: 'March 11, 2026', time: '10:00 AM - 11:00 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Design strong, secure passwords by understanding real-world password vulnerabilities and security principles.' },
+-    { id: 2, title: 'Cyber Security Quiz', category: 'Technical', emoji: '≡ƒñû', date: 'March 11, 2026', time: '11:00 AM - 12:00 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Test participantsΓÇÖ understanding of cyber security concepts, threats, and defenses.' },
+-    { id: 3, title: 'See it - Name it', category: 'Technical', emoji: '≡ƒñö', date: 'March 11, 2026', time: '1:10 PM - 2:10 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Test participantsΓÇÖ ability to recognize logos related to technology, cybersecurity, software, and global brands.' },
+-    { id: 4, title: 'Need for Speed', category: 'Technical', emoji: 'ΓÜí', date: 'March 11, 2026', time: '2:10 AM - 3:10 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Measure typing speed and accuracy under intense time pressure.' },
+-    { id: 5, title: 'IPL Mock Auction', category: 'Non-Technical', emoji: '≡ƒÅÅ', date: 'March 11, 2026', time: '3:10 AM - 4:10 PM', venue: 'Lab 102', team: '4 Members', prize: 'Γé╣110', description: 'Build the best-performing team within a fixed budget by strategically selecting players and optimizing resources.' }
++    { id: 1, title: 'Hang the Hacker', category: 'Technical', emoji: '≡ƒöÆ', date: 'March 11, 2026', time: '10:00 AM - 11:00 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Simulates real-world password guessing attacks using a fun hangman-style game.' },
++    { id: 2, title: 'Cyber Security Quiz', category: 'Technical', emoji: '≡ƒñû', date: 'March 11, 2026', time: '11:00 AM - 12:00 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'A fast-paced quiz covering real-world cyber security topics, focusing on general awareness and fundamental knowledge.' },
++    { id: 3, title: 'See it - Name it', category: 'Technical', emoji: '≡ƒñö', date: 'March 11, 2026', time: '1:10 PM - 2:10 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Participants will be shown logos without names and must identify them correctly and quickly.' },
++    { id: 4, title: 'Need for Speed', category: 'Technical', emoji: 'ΓÜí', date: 'March 11, 2026', time: '2:10 AM - 3:10 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Participants are given a passage to type within a fixed time limit.' },
++    { id: 5, title: 'IPL Mock Auction', category: 'Non-Technical', emoji: '≡ƒÅÅ', date: 'March 11, 2026', time: '3:10 AM - 4:10 PM', venue: 'Lab 102', team: '4 Members', prize: 'Γé╣110', description: 'Simulates an IPL-style auction, focusing purely on decision-making, resource allocation, and strategic optimization' }
+ ];
+ 
+ function EventModal({ event, onClose }) {
+
+commit a64d7be36ea39020ad8c065ab922dce6fd07e691
+Author: Pranay Tamada <pranay.tamada@gmail.com>
+Date:   Sun Feb 22 17:57:22 2026 +0530
+
+    feat: complete UI update and deployment config
+
+diff --git a/src/app/events/page.js b/src/app/events/page.js
+new file mode 100644
+index 0000000..1444e76
+--- /dev/null
++++ b/src/app/events/page.js
+@@ -0,0 +1,166 @@
++'use client';
++
++import { useState } from 'react';
++import Link from 'next/link';
++import { motion, AnimatePresence } from 'framer-motion';
++
++const pageTransition = {
++    initial: { opacity: 0, y: 30 },
++    animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
++    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
++};
++
++const categories = ['All', 'Technical', 'Non-Technical', 'Gaming', 'Workshops'];
++
++const events = [
++    { id: 1, title: 'Strong Password Builder', category: 'Technical', emoji: '≡ƒöÆ', date: 'March 11, 2026', time: '10:00 AM - 11:00 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Design strong, secure passwords by understanding real-world password vulnerabilities and security principles.' },
++    { id: 2, title: 'Cyber Security Quiz', category: 'Technical', emoji: '≡ƒñû', date: 'March 11, 2026', time: '11:00 AM - 12:00 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Test participantsΓÇÖ understanding of cyber security concepts, threats, and defenses.' },
++    { id: 3, title: 'See it - Name it', category: 'Technical', emoji: '≡ƒñö', date: 'March 11, 2026', time: '1:10 PM - 2:10 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Test participantsΓÇÖ ability to recognize logos related to technology, cybersecurity, software, and global brands.' },
++    { id: 4, title: 'Need for Speed', category: 'Technical', emoji: 'ΓÜí', date: 'March 11, 2026', time: '2:10 AM - 3:10 PM', venue: 'Lab 102', team: 'Individual', prize: 'Γé╣110', description: 'Measure typing speed and accuracy under intense time pressure.' },
++    { id: 5, title: 'IPL Mock Auction', category: 'Non-Technical', emoji: '≡ƒÅÅ', date: 'March 11, 2026', time: '3:10 AM - 4:10 PM', venue: 'Lab 102', team: '4 Members', prize: 'Γé╣110', description: 'Build the best-performing team within a fixed budget by strategically selecting players and optimizing resources.' }
++];
++
++function EventModal({ event, onClose }) {
++    return (
++        <motion.div
++            initial={{ opacity: 0 }}
++            animate={{ opacity: 1 }}
++            exit={{ opacity: 0 }}
++            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
++            onClick={onClose}
++        >
++            <motion.div
++                initial={{ scale: 0.85, opacity: 0 }}
++                animate={{ scale: 1, opacity: 1 }}
++                exit={{ scale: 0.85, opacity: 0 }}
++                transition={{ type: 'spring', stiffness: 200, damping: 25 }}
++                onClick={(e) => e.stopPropagation()}
++                className="glass-card !border-neon-purple/40 max-w-lg w-full max-h-[80vh] overflow-y-auto neon-glow-purple"
++                style={{ padding: '2rem' }}
++            >
++                <div className="flex items-start justify-between mb-6">
++                    <div className="flex items-center gap-3">
++                        <span className="text-4xl">{event.emoji}</span>
++                        <div>
++                            <h2 className="font-heading text-xl font-bold text-neon-blue neon-text-blue">{event.title}</h2>
++                            <span className="text-xs font-heading tracking-widest uppercase text-neon-purple/70">{event.category}</span>
++                        </div>
++                    </div>
++                    <button
++                        onClick={onClose}
++                        className="text-white/40 hover:text-neon-purple transition-colors text-2xl leading-none"
++                    >
++                        Γ£ò
++                    </button>
++                </div>
++
++                <p className="text-white/60 text-sm leading-relaxed mb-6">{event.description}</p>
++
++                <div className="grid grid-cols-2 gap-4 mb-6">
++                    {[
++                        { label: 'Date', value: event.date },
++                        { label: 'Time', value: event.time },
++                        { label: 'Venue', value: event.venue },
++                        { label: 'Team', value: event.team },
++                    ].map((item, i) => (
++                        <div key={i} className="bg-dark-bg/60 rounded-lg p-3 border border-neon-purple/10">
++                            <p className="text-xs font-heading tracking-wider text-neon-blue/60 mb-1">{item.label}</p>
++                            <p className="text-sm text-white/80 font-medium">{item.value}</p>
++                        </div>
++                    ))}
++                </div>
++
++                <div className="flex items-center justify-between" style={{ marginTop: '1.5rem' }}>
++                    <div className="flex items-center gap-2">
++                        <span className="text-xs font-heading tracking-wider text-neon-purple/60">Prize:</span>
++                        <span className="font-heading text-lg font-bold text-neon-purple neon-text-purple">{event.prize}</span>
++                    </div>
++                    <Link href="/register" className="neon-btn !py-2 !px-6 !text-xs">Register</Link>
++                </div>
++            </motion.div>
++        </motion.div>
++    );
++}
++
++export default function Events() {
++    const [activeCategory, setActiveCategory] = useState('All');
++    const [selectedEvent, setSelectedEvent] = useState(null);
++
++    const filtered = activeCategory === 'All' ? events : events.filter(e => e.category === activeCategory);
++
++    return (
++        <motion.div {...pageTransition} className="min-h-screen" style={{ paddingTop: '6rem', paddingBottom: '4rem', paddingLeft: '1.5rem', paddingRight: '1.5rem' }}>
++            <div className="max-w-7xl" style={{ margin: '0 auto' }}>
++                {/* Header */}
++                <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
++                    <h1 className="font-heading text-4xl md:text-5xl font-bold" style={{ marginBottom: '1rem', textAlign: 'center' }}>
++                        <span className="bg-gradient-to-r from-neon-purple to-neon-blue bg-clip-text text-transparent">Events</span>
++                    </h1>
++                    <p className="text-white/40" style={{ marginBottom: '1rem', textAlign: 'center', maxWidth: '32rem', margin: '0 auto 1rem auto' }}>Pick your battlefield and prove your skills.</p>
++                </div>
++
++                {/* Category Filter */}
++                <div className="flex flex-wrap gap-3" style={{ marginBottom: '3rem', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
++                    {categories.map(cat => (
++                        <button
++                            key={cat}
++                            onClick={() => setActiveCategory(cat)}
++                            className={`font-heading tracking-widest uppercase rounded-full border transition-all duration-300
++                ${activeCategory === cat
++                                    ? 'bg-neon-purple/20 border-neon-purple text-neon-purple neon-glow-purple'
++                                    : 'bg-transparent border-white/10 text-white/40 hover:border-neon-blue/40 hover:text-neon-blue'}`}
++                            style={{ padding: '0.625rem 1.5rem', fontSize: '0.75rem', letterSpacing: '0.1em' }}
++                        >
++                            {cat}
++                        </button>
++                    ))}
++                </div>
++
++                {/* Event Grid */}
++                <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '1rem', marginBottom: '2rem', justifyItems: 'center' }}>
++                    <AnimatePresence mode="popLayout">
++                        {filtered.map((event) => (
++                            <motion.div
++                                key={event.id}
++                                layout
++                                initial={{ opacity: 0, scale: 0.9 }}
++                                animate={{ opacity: 1, scale: 1 }}
++                                exit={{ opacity: 0, scale: 0.9 }}
++                                transition={{ duration: 0.3 }}
++                                onClick={() => setSelectedEvent(event)}
++                                className="glass-card cursor-pointer group hover:!border-neon-blue/50 transition-all duration-300"
++                                style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', height: '100%', width: '100%', borderBottom: '2px solid rgba(168, 85, 247, 0.3)' }}
++                            >
++                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
++                                    <span className="text-2xl group-hover:scale-110 transition-transform" style={{ flexShrink: 0 }}>{event.emoji}</span>
++                                    <div>
++                                        <h3 className="font-heading font-bold text-white group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.875rem', margin: 0 }}>{event.title}</h3>
++                                        <span className="font-heading" style={{ fontSize: '0.65rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(168, 85, 247, 0.6)' }}>{event.category}</span>
++                                    </div>
++                                </div>
++
++                                <div style={{ marginBottom: '0.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
++                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôà {event.date} ΓÇó {event.time}</p>
++                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒôì {event.venue}</p>
++                                    <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', margin: 0 }}>≡ƒæÑ {event.team}</p>
++                                </div>
++
++                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
++                                    <span className="font-heading font-bold text-neon-purple" style={{ fontSize: '0.875rem' }}>{event.prize}</span>
++                                    <span className="font-heading group-hover:text-neon-blue transition-colors" style={{ fontSize: '0.7rem', letterSpacing: '0.1em', color: 'rgba(0, 240, 255, 0.5)' }}>
++                                        View Details ΓåÆ
++                                    </span>
++                                </div>
++                            </motion.div>
++                        ))}
++                    </AnimatePresence>
++                </motion.div>
++            </div>
++
++            {/* Modal */}
++            <AnimatePresence>
++                {selectedEvent && <EventModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
++            </AnimatePresence>
++        </motion.div>
++    );
++}
