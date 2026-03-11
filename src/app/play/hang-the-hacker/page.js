@@ -313,7 +313,7 @@ export default function HangTheHackerGame() {
             </h1>
             <p className="text-white/70 mb-12 leading-relaxed" style={{ padding: '1rem', lineHeight: '1.8' }}>
                 Welcome, Operator. Your mission is to bypass security systems using pattern recognition.
-                Guess the target's password before the firewall locks you out. You have 3 levels of increasing difficulty.
+                Guess the target&apos;s password before the firewall locks you out. You have 3 levels of increasing difficulty.
             </p>
             <button
                 onClick={() => startRound(1)}
@@ -395,7 +395,7 @@ export default function HangTheHackerGame() {
             {/* Context Clue */}
             <div className="w-full glass-card border-l-4 border-l-neon-blue bg-neon-blue/5" style={{ padding: '2rem', marginBottom: '3rem' }}>
                 <p className="text-sm font-heading tracking-widest text-neon-blue/80 uppercase mb-2">Target Intel:</p>
-                <p className="text-white/90 italic text-lg">"{targetPassword?.clue}"</p>
+                <p className="text-white/90 italic text-lg">&quot;{targetPassword?.clue}&quot;</p>
             </div>
 
             {/* Keyboard */}

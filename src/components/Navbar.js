@@ -73,7 +73,7 @@ export default function Navbar() {
                 {/* Global Hack Timer */}
                 {hackTime !== null && (
                     <div className="hidden md:flex items-center gap-2 rounded-full bg-neon-purple/10 border border-neon-purple/30 shadow-[0_0_10px_rgba(168,85,247,0.2)]" style={{ padding: '0.5rem 1.5rem' }}>
-                        <span className="text-[10px] md:text-xs uppercase tracking-widest text-neon-purple/80 font-heading">Player's hack time:</span>
+                        <span className="text-[10px] md:text-xs uppercase tracking-widest text-neon-purple/80 font-heading">Player&apos;s hack time:</span>
                         <span className="font-mono text-sm font-bold text-white tracking-widest">{formatTime(hackTime)}</span>
                     </div>
                 )}
@@ -135,7 +135,7 @@ export default function Navbar() {
                         <div className="px-6 py-4 flex flex-col gap-4">
                             {hackTime !== null && (
                                 <div className="flex items-center justify-between border-b border-neon-purple/20 pb-4 mb-2">
-                                    <span className="text-xs uppercase tracking-widest text-neon-purple/80 font-heading">Player's hack time:</span>
+                                    <span className="text-xs uppercase tracking-widest text-neon-purple/80 font-heading">Player&apos;s hack time:</span>
                                     <span className="font-mono text-sm font-bold text-white">{formatTime(hackTime)}</span>
                                 </div>
                             )}
