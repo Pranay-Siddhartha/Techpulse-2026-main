@@ -11,11 +11,11 @@ const GAME_DATA = [
         title: "Level 1: Basic Infiltration",
         description: "Target relies on predictable patterns. Names, dates, and common words.",
         passwords: [
-            { word: "QWERTY", clue: "The most basic keyboard walk." },
-            { word: "123456", clue: "The most basic numeric sequence.", isAlphanumeric: true },
-            { word: "PASSWORD", clue: "The most notoriously bad choice." },
-            { word: "ADMIN", clue: "The default account for administrators." },
-            { word: "GUEST", clue: "The default account everyone leaves enabled." }
+            { word: "12345", clue: "A sequence an idiot would have on their luggage.", isAlphanumeric: true },
+            { word: "ROOT", clue: "The ultimate superuser in Unix-like systems." },
+            { word: "SUNSHINE", clue: "A bright and happy word, terrible for security." },
+            { word: "ABCDEF", clue: "The first six letters of the alphabet, showing zero effort." },
+            { word: "WELCOME", clue: "The most inviting and insecure word to use as a key." }
         ]
     },
     {
@@ -23,11 +23,11 @@ const GAME_DATA = [
         title: "Level 2: Moderate Security",
         description: "Target has read some guidelines. Combining words, numbers, and basic symbols.",
         passwords: [
-            { word: "ADMIN123", clue: "Default credentials for a lazy administrator followed by a numerical sequence.", isAlphanumeric: true },
-            { word: "LETMEIN", clue: "A literal demand you might shout at a stubborn locked door." },
-            { word: "HACKER", clue: "A common term for someone who breaks into computer systems." },
-            { word: "SERVER", clue: "The backbone of any network." },
-            { word: "W3LCOM3", clue: "A friendly greeting, with vowels turned to numbers." }
+            { word: "NINJA123", clue: "A stealthy warrior followed by a predictable number sequence.", isAlphanumeric: true },
+            { word: "ILOVEYOU", clue: "A classic phrase and the name of a devastating 2000s computer worm." },
+            { word: "FOOTBALL", clue: "A very common sports-related security flaw." },
+            { word: "BATMAN", clue: "The dark knight, but a very weak credential." },
+            { word: "P@SSWORD", clue: "Substituting a letter for a symbol doesn't make it secure.", isAlphanumeric: true, a: true } // a: true forces symbols keyboard
         ]
     },
     {
@@ -35,11 +35,11 @@ const GAME_DATA = [
         title: "Level 3: Advanced Encryption",
         description: "Stronger passwords, but still vulnerable if you understand the pattern.",
         passwords: [
-            { word: "CHANGEME", clue: "The exact instruction given by the system administrator, ironically kept as the permanent credential." },
-            { word: "QAZWSX", clue: "A zig-zag journey down the first two columns of the keyboard." },
-            { word: "RASPBERRY", clue: "The famously unchanged default password for the 'pi' user on a wildly popular microcomputer." },
-            { word: "DEFAULT", clue: "The standard factory setting you are supposed to immediately replace." },
-            { word: "SYSTEMADMIN", clue: "The title of the very IT person who will yell at you for choosing this as your login." }
+            { word: "SUPERADMIN", clue: "When a regular administrator just isn't powerful enough." },
+            { word: "WSXEDC", clue: "A vertical 'V' pattern down the left side of a standard keyboard." },
+            { word: "UBUNTU", clue: "An African philosophy and a very popular Linux distribution." },
+            { word: "FORGOTTEN", clue: "What happens to this credential, leading to a reset request." },
+            { word: "CORRECT", clue: "A horse battery staple... well part of it anyway." }
         ]
     }
 ];
@@ -351,21 +351,6 @@ export default function HangTheHackerGame() {
                 </div>
 
                 <div className="flex gap-8 items-center text-right">
-                    <button
-                        onPointerDown={(e) => {
-                            e.preventDefault();
-                            handleHintClick(e);
-                        }}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleHintClick(e);
-                        }}
-                        className={`rounded-lg font-heading tracking-widest text-xs border transition-all shadow-[0_0_10px_rgba(0,240,255,0.2)]
-                            ${hintsUsed < 2 ? 'border-neon-blue text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20' : 'border-white/20 text-white/30 cursor-not-allowed'}`}
-                        style={{ padding: '0.75rem 1.5rem' }}
-                    >
-                        DECRYPT HINT ({2 - hintsUsed} LEFT)
-                    </button>
                     <div>
                         <span className="text-xs uppercase tracking-widest text-neon-blue/60 font-heading block">Time Elapsed</span>
                         <span className="font-mono text-xl font-bold text-white">{formatTime(timeElapsed)}</span>
